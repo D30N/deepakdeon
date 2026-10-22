@@ -103,6 +103,8 @@
 .dd-fly{position:absolute;bottom:62%;font-size:14px;color:#fb2c4d;pointer-events:none;z-index:3;animation:ddfly 1.05s ease-out forwards}
 @keyframes ddfly{0%{opacity:0;transform:translateY(6px) scale(.5)}18%{opacity:1}100%{opacity:0;transform:translateY(-52px) scale(1.2) rotate(10deg)}}
 .dd-like-n{color:var(--dim);font-size:14.5px}
+
+.dd-fab{position:fixed;top:76px;right:12px;z-index:60;display:flex;align-items:center;gap:7px;padding:5px;border-radius:999px;border:1px solid var(--line);background:var(--card);box-shadow:0 6px 20px rgba(0,0,0,.35)}
 </style>
 <link rel="manifest" href="/manifest.webmanifest" />
 <meta name="theme-color" content="#0a0a0f" />
@@ -115,8 +117,9 @@
 <div class="wrap">
   <header>
     <a class="logo" href="../../">DEON<span>.</span></a>
-    <span class="hdr-right"><a class="home-link" href="../">&larr; Android / Tech</a><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><span class="dd-fsc"><button class="dd-fs" type="button" data-d="-1" aria-label="Decrease font size">A&minus;</button><button class="dd-fs" type="button" data-d="1" aria-label="Increase font size">A+</button></span></span>
+    <span class="hdr-right"><a class="home-link" href="../">&larr; Android / Tech</a></span>
   </header>
+  <div class="dd-fab"><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><span class="dd-fsc"><button class="dd-fs" type="button" data-d="-1" aria-label="Decrease font size">A&minus;</button><button class="dd-fs" type="button" data-d="1" aria-label="Increase font size">A+</button></span></div>
   <div class="sec-tag">// Articles</div>
   <h1 class="title">Mobile data has expired</h1>
   <div class="pub-date">May 7, 2021 <span class="dd-rt">&middot; 2 min read</span></div>
