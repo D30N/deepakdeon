@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reels — Deepak Deon</title>
+<meta name="description" content="Reels by Deepak Deon">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#101018; --ink:#f2f0ea; --dim:#9a97a8;
+    --lime:#c8f542; --violet:#8b7bff; --pink:#ff7ad9; --line:#26262f;
+    --card:#12121a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:#0a0a0f}
+  .wrap{max-width:880px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0 8px}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em}
+  .logo span{color:var(--lime)}
+  .home-link{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .home-link:hover{color:var(--lime)}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:44px 0 12px}
+  h1{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(36px,7.5vw,68px);line-height:1;margin-bottom:14px}
+  h1 em{font-style:normal;color:var(--lime)}
+  .count{color:var(--dim);font-size:16px;margin-bottom:36px}
+  .art{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;margin-bottom:10px;transition:.25s;animation:up .6s cubic-bezier(.22,1,.36,1) both}
+  .art:hover{border-color:var(--pink);transform:translateY(-3px)}
+  .art .no{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dim);min-width:26px}
+  .art .ttl{flex:1;font-weight:600;font-size:16.5px;line-height:1.45}
+  .art .arr{color:var(--dim);font-size:17px;transition:.25s}
+  .art:hover .arr{color:var(--lime)}
+  @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  .disclaimer{margin-top:46px;border-top:1px solid var(--line);padding-top:32px}
+  .disclaimer .disc-txt{font-size:19px;line-height:1.75;margin-bottom:22px}
+  .disclaimer figure img{width:100%;height:auto;border-radius:16px;display:block}
+  .disclaimer figcaption{color:var(--dim);font-size:15px;text-align:center;margin-top:14px;line-height:1.6}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;justify-content:center;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:44px auto 0}
+
+
+  /* Theme toggle + light (day) theme */
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--card,#12121a);color:var(--ink);cursor:pointer;transition:.25s;padding:0;flex:none}
+  .theme-toggle:hover{border-color:var(--lime);color:var(--lime)}
+  .theme-toggle svg{width:19px;height:19px;display:block}
+  .theme-toggle .ic-sun{display:none}
+  html[data-theme="light"] .theme-toggle .ic-sun{display:block}
+  html[data-theme="light"] .theme-toggle .ic-moon{display:none}
+  .hdr-right{display:flex;align-items:center;gap:16px}
+  html[data-theme="light"]{--bg:#f7f6f1;--bg2:#efeee7;--ink:#17171d;--dim:#5f5f6a;--line:#ddd9cd;--card:#ffffff;--lime:#79a400;--violet:#6a54e8;--pink:#e84fc0}
+</style>
+<script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#0a0a0f" />
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../">DEON<span>.</span></a>
+    <span class="hdr-right"><a class="home-link" href="../">&larr; Home</a><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button></span>
+  </header>
+  <div class="sec-tag">// Articles</div>
+  <h1>Read my <em>Reels</em></h1>
+  <p class="count">58 articles</p>
+  <main>
+    <a class="art" style="animation-delay:35ms" href="3d-whatsapp-stickers-own-face-10-16/"><span class="no">01</span><span class="ttl">സ്വന്തം മുഖം വെച്ച് 3D WhatsApp Stickers ഉണ്ടാക്കാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:70ms" href="whatsapp-message-schedule-10-14/"><span class="no">02</span><span class="ttl">WhatsApp Message ഇനി Schedule ചെയ്ത് അയക്കാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:105ms" href="free-photoshop-premiere-alternatives-artcraft-10-12/"><span class="no">03</span><span class="ttl">Photoshop-ഉം Premiere-ഉം ഇനി Free! ഒരാൾ ഒറ്റയ്ക്ക് ഉണ്ടാക്കിയ ArtCraft</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:140ms" href="photo-to-dslr-look-chatgpt-10-11/"><span class="no">04</span><span class="ttl">സാധാരണ Photo-യെ DSLR Look ആക്കാം — ChatGPT വെച്ച്!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:175ms" href="instagram-reels-ad-revenue-10-09/"><span class="no">05</span><span class="ttl">Instagram Reels-ൽ നിന്ന് ഇനി Ad Revenue! പക്ഷേ കണക്ക് കേട്ടാൽ ഞെട്ടും</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:210ms" href="chempilarayan-boat-race-09-21/"><span class="no">06</span><span class="ttl">ചെമ്പിലരയൻ ജലോത്സവം — സെപ്റ്റംബർ 27-ന് മുരിഞ്ഞപുഴയിൽ വള്ളംകളി!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:245ms" href="copy-any-photos-vibe-chatgpt-09-20/"><span class="no">07</span><span class="ttl">ഏത് Photo-യുടെയും Vibe Copy ചെയ്യാം — ChatGPT Trick!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:280ms" href="meta-muse-ai-train-ticket-09-18/"><span class="no">08</span><span class="ttl">ട്രെയിൻ ടിക്കറ്റ് എടുക്കാൻ Meta-യുടെ Muse AI മതി! Captcha വരെ വായിച്ച് തരും</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:315ms" href="meta-rayban-glass-story-trick-09-01/"><span class="no">09</span><span class="ttl">Meta Ray-Ban Glass ഇല്ലാതെ തന്നെ ആ Story ഇടാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:350ms" href="google-storage-full-otp-trap-08-19/"><span class="no">10</span><span class="ttl">Google Storage Full ആയാൽ OTP പോലും വരില്ല — ഈ Trap അറിയാമോ?</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:385ms" href="free-movies-series-without-netflix-prime-08-12/"><span class="no">11</span><span class="ttl">Netflix-ഉം Prime-ഉം ഇല്ലാതെ Movies-ഉം Series-ഉം Free ആയി കാണാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:420ms" href="chatgpt-voice-update-part-1-08-10/"><span class="no">12</span><span class="ttl">ChatGPT-യുടെ പുതിയ Voice — മനുഷ്യനെപ്പോലെ തന്നെ! (Part 1)</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:455ms" href="chatgpt-voice-update-part-2-08-10/"><span class="no">13</span><span class="ttl">ChatGPT-യുടെ പുതിയ Voice — മനുഷ്യനെപ്പോലെ തന്നെ! (Part 2)</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:490ms" href="copy-malayalam-text-from-reel-07-21/"><span class="no">14</span><span class="ttl">Reel-ലെയും Post-ലെയും മലയാളം Text അതേപടി Copy ചെയ്യാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:525ms" href="gpay-coupons-cash-fact-check-06-24/"><span class="no">15</span><span class="ttl">Google Pay Coupons Cash ആക്കാം എന്ന് കേട്ടോ? ആദ്യം ഇത് അറിയൂ!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:560ms" href="telegram-proxy-india-06-16/"><span class="no">16</span><span class="ttl">Telegram കിട്ടുന്നില്ലേ? Proxy വെച്ച് തുറക്കാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:595ms" href="sideloaded-streaming-app-danger-06-12/"><span class="no">17</span><span class="ttl">Live Match കാണാൻ പുറത്തുനിന്ന് App ഇട്ടോ? എനിക്ക് സംഭവിച്ചത് കേൾക്കൂ!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:630ms" href="upi-autopay-list-cancel-06-10/"><span class="no">18</span><span class="ttl">AutoPay വെച്ച് മറന്നുപോയോ? എല്ലാം ഒരിടത്ത് കണ്ട് Cancel ചെയ്യാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:665ms" href="instagram-account-hack-protection-setting-06-09/"><span class="no">19</span><span class="ttl">Instagram Account Hack ആകാതെ സൂക്ഷിക്കാൻ ഈ Setting ഉടൻ ചെയ്യൂ!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:700ms" href="vivo-x200-pro-4k60-upload-test-06-01/"><span class="no">20</span><span class="ttl">Vivo X200 Pro-യിൽ 4K 60fps Shoot ചെയ്ത് അങ്ങനെ തന്നെ Upload ചെയ്താൽ Quality പോകുമോ?</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:735ms" href="find-who-doesnt-follow-back-05-21/"><span class="no">21</span><span class="ttl">നിങ്ങൾ Follow ചെയ്യുന്ന, പക്ഷേ തിരിച്ച് Follow ചെയ്യാത്തവരെ കണ്ടെത്താം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:770ms" href="hide-movie-spoilers-on-instagram-05-20/"><span class="no">22</span><span class="ttl">Reels-ൽ Movie Spoilers കാണാതിരിക്കാൻ ഈ Trick ചെയ്യൂ!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:805ms" href="instagram-disabled-account-selfie-verification-05-08/"><span class="no">23</span><span class="ttl">Disabled ആയ Instagram Account തിരിച്ചെടുക്കാം — Video Selfie Verification!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:840ms" href="malayalam-fonts-in-inshot-04-18/"><span class="no">24</span><span class="ttl">InShot-ൽ Stylish മലയാളം Fonts ചേർക്കാം — തട്ടിക്കൂട്ട് Tutorial!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:875ms" href="capcut-pro-mod-without-vpn-04-18/"><span class="no">25</span><span class="ttl">CapCut Pro MOD — VPN ഇല്ലാതെ തന്നെ Work ചെയ്യും!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:910ms" href="gpay-pocket-money-upi-circle-04-09/"><span class="no">26</span><span class="ttl">GPay-യിലെ 'Pocket Money' Scam അല്ല — പേടിക്കേണ്ട</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:945ms" href="trai-dnd-app-spam-report-04-07/"><span class="no">27</span><span class="ttl">Spam, Scam Calls Report ചെയ്താൽ Number തന്നെ Block ആകും! TRAI DND App</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:980ms" href="kwaicut-capcut-alternative-no-vpn-03-31/"><span class="no">28</span><span class="ttl">VPN ഇല്ലാതെ CapCut പോലൊരു Video Editor — KwaiCut!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1015ms" href="capcut-malayalam-fonts-03-02/"><span class="no">29</span><span class="ttl">CapCut-ൽ Stylish മലയാളം Fonts Add ചെയ്യാം — ഈ Trick അറിയാമോ?</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1050ms" href="gemini-gem-ai-photos-no-prompt-02-27/"><span class="no">30</span><span class="ttl">Prompt ഒന്നും എഴുതാതെ AI Photos ഉണ്ടാക്കാം — Gemini Gem Trick!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1085ms" href="swiggy-one-spotify-premium-free-02-25/"><span class="no">31</span><span class="ttl">Swiggy User ആണോ? 3 മാസം Spotify Premium Free ആയി കിട്ടും!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1120ms" href="follow-back-button-unfollow-trap-12-30/"><span class="no">32</span><span class="ttl">'Follow Back' അമർത്തിയാൽ Unfollow ആകും — ഈ Pop-up ശ്രദ്ധിച്ചോ?</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1155ms" href="suno-app-handwritten-lyrics-song-12-05/"><span class="no">33</span><span class="ttl">Suno App എത്തി! കൈയ്യെഴുത്ത് വരികൾ ഇനി Phone-ൽ നിന്ന് തന്നെ പാട്ടാക്കാം</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1190ms" href="chatgpt-go-free-12-months-india-11-03/"><span class="no">34</span><span class="ttl">ChatGPT Go ഒരു വർഷം FREE! ₹399 Plan ഇന്ത്യയിൽ സൗജന്യം</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1225ms" href="android-to-iphone-airdrop-easyshare-10-20/"><span class="no">35</span><span class="ttl">Android-ൽ നിന്ന് iPhone-ലേക്ക് AirDrop പോലെ Files അയക്കാം — EasyShare വഴി!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1260ms" href="audio-redirect-bluetooth-speaker-trick-09-24/"><span class="no">36</span><span class="ttl">Bluetooth Speaker-ൽ പാട്ട്, Phone-ൽ Voice Note — Audio Redirect Trick!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1295ms" href="google-dialer-old-calling-interface-08-25/"><span class="no">37</span><span class="ttl">Google Dialer-ന്റെ പുതിയ Calling Interface ഇഷ്ടപ്പെട്ടില്ലേ? പഴയത് തിരികെ കൊണ്ടുവരാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1330ms" href="whatsapp-contacts-not-in-phonebook-08-25/"><span class="no">38</span><span class="ttl">WhatsApp-ൽ Save ചെയ്ത Contact Phonebook-ൽ കാണുന്നില്ലേ? കാരണം ഇതാണ്!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1365ms" href="gmail-unsubscribe-promotional-mails-08-12/"><span class="no">39</span><span class="ttl">Promotional Mails കൊണ്ട് Inbox നിറഞ്ഞോ? Gmail-ൽ ഇനി ഒറ്റയടിക്ക് Unsubscribe ചെയ്യാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1400ms" href="instagram-shared-access-manage-account-07-20/"><span class="no">40</span><span class="ttl">Password കൊടുക്കാതെ തന്നെ Instagram Account മറ്റൊരാളെ കൊണ്ട് Manage ചെയ്യിക്കാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1435ms" href="perplexity-ai-bot-telegram-07-11/"><span class="no">41</span><span class="ttl">Telegram Group-ൽ ചോദിച്ചാൽ ഉടൻ മറുപടി തരുന്ന Perplexity AI Bot!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1470ms" href="instagram-followers-count-edit-alight-motion-07-11/"><span class="no">42</span><span class="ttl">Instagram Followers Count കേറുന്ന പോലെ Edit ചെയ്യാം — Alight Motion Trick!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1505ms" href="whatsapp-view-once-save-userbot-part-2-07-04/"><span class="no">43</span><span class="ttl">WhatsApp View Once Save ചെയ്യുന്ന Bot — Setup ഇതാണ്! (Part 2)</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1540ms" href="whatsapp-view-once-save-userbot-part-1-06-26/"><span class="no">44</span><span class="ttl">WhatsApp View Once Photos Save ചെയ്യാം — Userbot വഴി! (Part 1)</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1575ms" href="google-veo-3-free-trial-06-24/"><span class="no">45</span><span class="ttl">Google Veo 3 Free ആയി Use ചെയ്യാം — ഒരു മാസം Daily 3 Videos!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1610ms" href="notebooklm-malayalam-ai-class-05-12/"><span class="no">46</span><span class="ttl">PDF കൊടുത്താൽ മതി — AI മലയാളത്തിൽ ക്ലാസെടുക്കും! NotebookLM Trick</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1645ms" href="instagram-copyright-report-remove-reel-03-17/"><span class="no">47</span><span class="ttl">നിങ്ങളുടെ Reel അടിച്ചുമാറ്റിയോ? Copyright Report ചെയ്ത് Remove ആക്കാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1680ms" href="download-instagram-stories-with-music-instarchive-02-18/"><span class="no">48</span><span class="ttl">Music ഉള്ള Instagram Stories പോലും Download ചെയ്യാം! — Instarchive</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1715ms" href="download-anything-from-webpage-1dm-02-05/"><span class="no">49</span><span class="ttl">ഏത് Webpage-ൽ നിന്നും Video-യും Song-ഉം Photo-യും Download ചെയ്യാം! — 1DM+</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1750ms" href="not-reachable-trick-10-22/"><span class="no">50</span><span class="ttl">ഒരാൾ വിളിക്കുമ്പോൾ മാത്രം Not Reachable ആക്കാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1785ms" href="restore-deleted-whatsapp-chats-11-14/"><span class="no">51</span><span class="ttl">അറിയാതെ Delete ആയ WhatsApp Chats തിരിച്ചെടുക്കാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1820ms" href="instagram-pending-follow-requests-list-10-19/"><span class="no">52</span><span class="ttl">Instagram-ൽ Pending Follow Requests മുഴുവൻ List കാണാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1855ms" href="suno-ai-music-from-handwritten-lyrics-07-06/"><span class="no">53</span><span class="ttl">കൈയ്യെഴുത്ത് വരികൾ Suno AI കൊണ്ട് പാട്ടാക്കാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1890ms" href="facebook-camera-roll-settings-off-06-09/"><span class="no">54</span><span class="ttl">Facebook നിങ്ങളുടെ ഫോട്ടോകൾ നോക്കുന്നുണ്ട്! ഈ settings ഉടൻ off ചെയ്യൂ</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1925ms" href="custom-notebook-cover-photo-print-05-19/"><span class="no">55</span><span class="ttl">Notebook Cover-ൽ സ്വന്തം Photo Print ചെയ്ത് Order ചെയ്യാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1960ms" href="handwritten-malayalam-on-instagram-03-14/"><span class="no">56</span><span class="ttl">Instagram Story-യിൽ കൈകൊണ്ട് എഴുതിയ മലയാളം ചേർക്കാം!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:1995ms" href="group-trip-expense-split-app-08-18/"><span class="no">57</span><span class="ttl">കൂട്ടുകാരൊത്തുള്ള യാത്രയിൽ ചെലവ് split ചെയ്യാൻ ഈ app മതി!</span><span class="arr">&#8599;</span></a>
+    <a class="art" style="animation-delay:2030ms" href="nfc-sticker-digital-visiting-card-08-05/"><span class="no">58</span><span class="ttl">NFC Sticker-ൽ എന്റെ എല്ലാ Links-ഉം — Digital Visiting Card ഉണ്ടാക്കാം!</span><span class="arr">&#8599;</span></a>
+  </main>
+  <div class="disclaimer">
+    <p class="disc-txt"><strong>Disclaimer:</strong> പോസ്റ്റിലെ തെറ്റുകൾ ചൂണ്ടിക്കാണിച്ചാൽ തിരുത്താൻ തയ്യാറാണ്.</p>
+    <figure>
+      <img src="../assets/img/6520c0331e2d95f4db837.jpg" alt="">
+      <figcaption>&quot;എനിക്ക് എഴുതാൻ അല്ലേ അറിയൂ, വായിക്കാൻ അറിയില്ലല്ലോ..&quot;</figcaption>
+    </figure>
+  </div>
+
+</div>
+<footer><span>&copy; 2026 Deepak Deon</span></footer>
+<script>
+document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var h=document.documentElement;if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');try{localStorage.setItem('dd-theme','dark')}catch(e){}}else{h.setAttribute('data-theme','light');try{localStorage.setItem('dd-theme','light')}catch(e){}}})});
+</script>
+<script data-goatcounter="https://deepakdeon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
+</body>
+</html>
