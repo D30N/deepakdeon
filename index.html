@@ -205,7 +205,7 @@
 </style>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <style>
-.srch{position:relative;max-width:640px;margin:4px 0 20px;scroll-margin-top:84px}
+.srch{position:relative;max-width:640px;margin:4px 0 20px;scroll-margin-top:96px}
 .srch input{width:100%;padding:15px 18px 15px 48px;border-radius:14px;border:1.5px solid var(--dim);background:var(--bg2);color:var(--ink);font-size:15.5px;font-family:inherit;outline:none}
 .srch input::placeholder{color:var(--dim);opacity:1}
 .srch input:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(200,245,66,.15)}
@@ -693,7 +693,7 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
     }).catch(function(){});
   })();
 </script>
-<script>document.getElementById('search-fab').addEventListener('click',function(){var i=document.getElementById('srch-in');if(!i)return;var y=i.getBoundingClientRect().top+window.pageYOffset-84;window.scrollTo({top:y,behavior:'smooth'});setTimeout(function(){i.focus({preventScroll:true});},450);});</script>
+<script>document.getElementById('search-fab').addEventListener('click',function(){var i=document.getElementById('srch-in');if(!i)return;var y=i.getBoundingClientRect().top+window.pageYOffset-96;window.scrollTo({top:y,behavior:'smooth'});setTimeout(function(){i.focus({preventScroll:true});},450);});</script>
 <script data-goatcounter="https://deepakdeon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 (function(){
