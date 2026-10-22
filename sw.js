@@ -1,4 +1,4 @@
-const C = 'dd-cache-v1';
+const C = 'dd-cache-v2';
 self.addEventListener('install', function(e){ self.skipWaiting(); });
 self.addEventListener('activate', function(e){
   e.waitUntil(caches.keys().then(function(ks){
@@ -8,7 +8,7 @@ self.addEventListener('activate', function(e){
 self.addEventListener('fetch', function(e){
   var u = new URL(e.request.url);
   if (e.request.method !== 'GET' || u.origin !== location.origin) return;
-  var isPage = e.request.mode === 'navigate' || u.pathname.endsWith('/') || u.pathname.endsWith('.html');
+  var isPage = e.request.mode === 'navigate' || u.pathname.endsWith('/') || u.pathname.endsWith('.html') || u.pathname.endsWith('.json');
   if (isPage) {
     e.respondWith(fetch(e.request).then(function(r){
       var cc = r.clone(); caches.open(C).then(function(x){ x.put(e.request, cc); });
