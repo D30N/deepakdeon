@@ -38,6 +38,7 @@
   /* ---------- Loader ---------- */
   #loader{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:transform .8s cubic-bezier(.76,0,.24,1)}
   #loader.done{transform:translateY(-100%)}
+  html.seen-loader #loader{display:none!important}
   #loader .l-word{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(13px,2.2vw,18px);letter-spacing:.32em;text-transform:uppercase;color:var(--dim)}
   #loader .l-pct{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(64px,14vw,140px);line-height:1;color:var(--ink)}
   #loader .l-pct em{font-style:normal;color:var(--lime)}
@@ -215,6 +216,7 @@
 <meta name="theme-color" content="#0a0a0f" />
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
 <meta name="robots" content="noindex" />
+<script>try{ if(sessionStorage.getItem('dd-loader-seen')) document.documentElement.classList.add('seen-loader'); }catch(e){}</script>
 </head>
 <body>
 
@@ -445,6 +447,7 @@
   (function(){
     var pct = document.getElementById('pct'), fill = document.getElementById('fill'),
         loader = document.getElementById('loader'), n = 0;
+    try{ if(sessionStorage.getItem('dd-loader-seen')){ loader.style.display = 'none'; return; } sessionStorage.setItem('dd-loader-seen', '1'); }catch(e){}
     var iv = setInterval(function(){
       n += Math.floor(Math.random()*9) + 3;
       if (n >= 100) { n = 100; clearInterval(iv);
