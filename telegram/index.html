@@ -54,6 +54,9 @@
   html[data-theme="light"]{--bg:#f7f6f1;--bg2:#efeee7;--ink:#17171d;--dim:#5f5f6a;--line:#ddd9cd;--card:#ffffff;--lime:#79a400;--violet:#6a54e8;--pink:#e84fc0}
 </style>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#0a0a0f" />
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
 </head>
 <body>
 <div class="wrap">
@@ -113,5 +116,6 @@
 document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var h=document.documentElement;if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');try{localStorage.setItem('dd-theme','dark')}catch(e){}}else{h.setAttribute('data-theme','light');try{localStorage.setItem('dd-theme','light')}catch(e){}}})});
 </script>
 <script data-goatcounter="https://deepakdeon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
 </body>
 </html>

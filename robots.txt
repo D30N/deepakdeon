@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://d30n.github.io/sitemap.xml

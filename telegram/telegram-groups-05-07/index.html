@@ -66,8 +66,26 @@
   .pub-date{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:4px}
 </style>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<style>
+#rdprog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--lime);z-index:99;transition:width .08s linear}
+.shr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:26px 0 4px}
+.shr span{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.shr-btn{padding:9px 18px;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--ink);font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit}
+.shr-btn:hover{border-color:var(--lime)}
+.rel{margin:30px 0 6px;padding:22px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.rel h3{font-size:17px;margin:0 0 12px;color:var(--ink)}
+.rel ul{list-style:none;margin:0;padding:0}
+.rel li{padding:9px 0;border-top:1px solid var(--line)}
+.rel li:first-child{border-top:none;padding-top:2px}
+.rel a{color:var(--ink);font-size:15px;line-height:1.45}
+.rel a:hover{color:var(--lime)}
+</style>
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#0a0a0f" />
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
 </head>
 <body>
+<div id="rdprog"></div>
 <div class="wrap">
   <header>
     <a class="logo" href="../../">DEON<span>.</span></a>
@@ -90,8 +108,10 @@
   <a class="cmt-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdYMN8qCT6FhcwEhvoPxiyemcFJIU4G3-h0FWo2C2JKxtlL2w/viewform?usp=pp_url&entry.1588219255=Telegram%20groups" target="_blank" rel="noopener">Add a comment &rarr;</a>
 </section>
 </article>
+  <div class="shr"><span>Share this post</span><a class="shr-btn" data-sh="wa" target="_blank" rel="noopener">WhatsApp</a><a class="shr-btn" data-sh="tg" target="_blank" rel="noopener">Telegram</a><button class="shr-btn" data-sh="cp" type="button">Copy link</button></div>
   <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="994">994</span></div>
   <nav class="pn"><a class="prev" href="../how-about-the-future-whatsapp-01-23/"><span class="dir">&larr; Previous</span>2030 ലെ വാട്സാപ്പ് എങ്ങനെയായിര…</a><a class="next" href="../import-chats-in-telegram-05-20/"><span class="dir">Next &rarr;</span>വാട്സാപ്പ് ചാറ്റുകൾ എങ്ങനെ ടെല…</a></nav>
+  <section class="rel"><h3>You may also like</h3><ul><li><a href="../telegram-premium-06-20/">Telegram Premium</a></li><li><a href="../telegram-x-11-08/">Telegram X: November Update</a></li><li><a href="../what-are-telegram-userbots-11-06/">What are Telegram userbots?</a></li></ul></section>
   <a class="back" href="../">&larr; All Telegram posts</a>
 </div>
 <footer><span>&copy; 2026 Deepak Deon</span></footer>
@@ -117,5 +137,24 @@
 document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var h=document.documentElement;if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');try{localStorage.setItem('dd-theme','dark')}catch(e){}}else{h.setAttribute('data-theme','light');try{localStorage.setItem('dd-theme','light')}catch(e){}}})});
 </script>
 <script data-goatcounter="https://deepakdeon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var bar=document.getElementById('rdprog');
+  function upd(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var p=max>0?(h.scrollTop/max):0;if(bar)bar.style.width=(p*100)+'%';}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+  var url=location.href, title=document.title;
+  document.querySelectorAll('.shr-btn').forEach(function(b){
+    var k=b.getAttribute('data-sh');
+    if(k==='wa')b.href='https://wa.me/?text='+encodeURIComponent(title+' '+url);
+    if(k==='tg')b.href='https://t.me/share/url?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(title);
+    if(k==='cp')b.addEventListener('click',function(){
+      function done(){b.textContent='Copied \u2713';setTimeout(function(){b.textContent='Copy link'},1600);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done).catch(function(){window.prompt('Copy this link:',url);});}
+      else{window.prompt('Copy this link:',url);}
+    });
+  });
+})();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
 </body>
 </html>
