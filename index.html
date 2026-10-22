@@ -603,7 +603,7 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
       for (var sec in BASE) if (h.indexOf(sec + '/') === 0) return sec;
       return null;
     }
-    var BAKED = {};
+    var BAKED = {"android": 187884, "memories": 15390, "reels": 50, "telegram": 201359};
     els.forEach(function(el){
       var sec = sectionOf(el);
       if (sec) BAKED[sec] = parseInt(el.textContent.replace(/[^0-9]/g, ''), 10) || 0;
