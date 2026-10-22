@@ -92,9 +92,16 @@
 .dd-fs{height:40px;min-width:40px;padding:0 9px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:.25s}
 .dd-fs:hover{border-color:var(--lime);color:var(--lime)}
 .dd-react{display:flex;align-items:center;justify-content:center;gap:9px;margin:16px 0 2px}
-.dd-like{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:20px;line-height:1;cursor:pointer;transition:.2s;color:var(--dim)}
-.dd-like:hover{border-color:#ff4d6d;transform:scale(1.07)}
-.dd-like.on{border-color:#ff4d6d;background:rgba(255,77,109,.13);color:#ff4d6d}
+.dd-like{position:relative;width:48px;height:48px;border-radius:50%;border:none;background:radial-gradient(circle at 32% 28%,#ff8fa3,#fb2c4d 58%,#e01338);box-shadow:0 3px 10px rgba(251,44,77,.35),inset 0 -3px 6px rgba(0,0,0,.18),inset 0 3px 5px rgba(255,255,255,.35);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:transform .18s;-webkit-tap-highlight-color:transparent}
+.dd-like svg{width:26px;height:26px;display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+.dd-like:hover{animation:ddfb .7s ease}
+.dd-like:active{transform:scale(.88)}
+.dd-like.on{box-shadow:0 0 0 3px rgba(251,44,77,.35),0 3px 10px rgba(251,44,77,.45),inset 0 -3px 6px rgba(0,0,0,.18),inset 0 3px 5px rgba(255,255,255,.35)}
+.dd-like.pop{animation:ddpop .55s ease}
+@keyframes ddfb{0%{transform:scale(1)}30%{transform:scale(1.22) translateY(-4px) rotate(-5deg)}55%{transform:scale(1.08) rotate(4deg)}75%{transform:scale(1.16) translateY(-2px)}100%{transform:scale(1)}}
+@keyframes ddpop{0%{transform:scale(.8)}45%{transform:scale(1.3)}70%{transform:scale(.94)}100%{transform:scale(1)}}
+.dd-fly{position:absolute;bottom:62%;font-size:14px;color:#fb2c4d;pointer-events:none;z-index:3;animation:ddfly 1.05s ease-out forwards}
+@keyframes ddfly{0%{opacity:0;transform:translateY(6px) scale(.5)}18%{opacity:1}100%{opacity:0;transform:translateY(-52px) scale(1.2) rotate(10deg)}}
 .dd-like-n{color:var(--dim);font-size:14.5px}
 </style>
 <link rel="manifest" href="/manifest.webmanifest" />
@@ -121,7 +128,7 @@
 .cmt p{margin:0 0 16px;font-size:13.5px;color:var(--dim);line-height:1.55}
 .cmt .cmt-btn{display:inline-block;padding:12px 24px;border-radius:99px;background:var(--lime);color:#0a0a0f;font-weight:700;font-size:14.5px}
 </style>
-<div class="dd-react"><button class="dd-like" type="button" aria-label="Love this article">&#10084;</button><span class="dd-like-n"></span></div>
+<div class="dd-react"><button class="dd-like" type="button" aria-label="Love this article"><svg viewBox="0 0 24 24" fill="#fff"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button><span class="dd-like-n"></span></div>
 <section class="cmt">
   <h2>💬 Add a comment to this post</h2>
   <p>Your comment goes straight to Deon &mdash; nothing shows up here until he has reviewed it.</p>
@@ -194,7 +201,7 @@ if(liked)btn.classList.add('on');
 fetch('https://abacus.jasoncameron.dev/get/'+NS+'/'+K).then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&typeof d.value==='number')n.textContent=d.value;}).catch(function(){});
 btn.addEventListener('click',function(){
 if(localStorage.getItem('dd-liked-'+K))return;
-localStorage.setItem('dd-liked-'+K,'1');btn.classList.add('on');
+localStorage.setItem('dd-liked-'+K,'1');btn.classList.add('on');btn.classList.remove('pop');void btn.offsetWidth;btn.classList.add('pop');for(var i=0;i<6;i++){(function(i){var sp=document.createElement('span');sp.className='dd-fly';sp.textContent='\u2764';sp.style.left=(15+Math.random()*70)+'%';sp.style.animationDelay=(i*0.06)+'s';btn.appendChild(sp);setTimeout(function(){sp.remove();},1800);})(i);}
 fetch('https://abacus.jasoncameron.dev/hit/'+NS+'/'+K).then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&typeof d.value==='number')n.textContent=d.value;}).catch(function(){});
 });
 })();
