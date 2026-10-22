@@ -426,7 +426,7 @@
 </section>
 
 <footer>
-  <span class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num">27,500</span></span>
+  <span class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num">50,000</span></span>
   <span>© 2026 Deepak Deon</span>
 </footer>
 <script>
@@ -436,7 +436,7 @@
   var done=false; try{ done=!!sessionStorage.getItem('vc-'+KEY); }catch(e){}
   fetch('https://abacus.jasoncameron.dev/'+(done?'get':'hit')+'/deepakdeon-site/'+KEY)
     .then(function(r){ return r.json(); })
-    .then(function(d){ if(d && typeof d.value==='number'){ el.textContent=(27500+d.value).toLocaleString('en-US'); if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} } } })
+    .then(function(d){ if(d && typeof d.value==='number'){ el.textContent=(50000+d.value).toLocaleString('en-US'); if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} } } })
     .catch(function(){});
 })();
 </script>
