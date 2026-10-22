@@ -696,7 +696,7 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
   function render(){
     var q=inp.value.trim().toLowerCase();
     if(!q||!data){out.style.display='none';out.innerHTML='';return;}
-    var hits=data.filter(function(x){return (x.t+' '+(x.k||'')).toLowerCase().indexOf(q)>-1||x.s.toLowerCase().indexOf(q)>-1;}).slice(0,8);
+    var hits=data.filter(function(x){return (x.t+' '+(x.k||'')+' '+x.u).toLowerCase().indexOf(q)>-1||x.s.toLowerCase().indexOf(q)>-1;}).slice(0,8);
     out.innerHTML=hits.length?hits.map(function(x){return '<a href="'+x.u+'"><span>'+esc(x.t)+'</span><span class="stag">'+esc(x.s)+'</span></a>';}).join(''):'<div class="none">No articles found</div>';
     out.style.display='block';
   }
