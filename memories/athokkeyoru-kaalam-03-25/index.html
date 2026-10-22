@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>അതൊക്കെയൊരു കാലം — Deepak Deon</title>
+<meta property="og:type" content="article" />
+<meta property="og:title" content="അതൊക്കെയൊരു കാലം — Deepak Deon" />
+<meta property="og:image" content="https://deepakdeon.github.io/assets/og-image-v3.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://deepakdeon.github.io/assets/og-image-v3.jpg" />
+
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#101018; --ink:#f2f0ea; --dim:#9a97a8;
+    --lime:#c8f542; --violet:#8b7bff; --pink:#ff7ad9; --line:#26262f;
+    --card:#12121a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:#0a0a0f}
+  .wrap{max-width:760px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0 8px}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em}
+  .logo span{color:var(--lime)}
+  .home-link{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .home-link:hover{color:var(--lime)}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:44px 0 12px}
+  h1.title{font-weight:700;font-size:clamp(30px,6vw,46px);line-height:1.25;margin-bottom:30px}
+  .post{font-size:18.5px;line-height:1.9;color:#e9e7e0}
+  .post p{margin:0 0 1.35em}
+  .post figure{margin:2em 0}
+  .post img{width:100%;height:auto;border-radius:14px;display:block}
+  .post figcaption{color:var(--dim);font-size:13.5px;text-align:center;margin-top:10px;line-height:1.5}
+  .post h3{font-size:25px;line-height:1.4;margin:1.7em 0 .6em;color:var(--ink)}
+  .post h4{font-size:21px;line-height:1.45;margin:1.6em 0 .55em;color:var(--ink)}
+  .post blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.8em 0;color:#d8d5cc}
+  .post a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+  .post hr{border:none;border-top:1px solid var(--line);margin:2.4em 0}
+  .post ul,.post ol{margin:0 0 1.35em 1.25em}
+  .post li{margin-bottom:.45em}
+  .post video{width:100%;height:auto;border-radius:14px;display:block;margin:1.8em 0}
+  .post iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;margin:1.8em 0}
+  .views-row{display:flex;align-items:center;gap:8px;margin-top:38px;color:var(--dim)}
+  .views-row svg{width:20px;height:20px;display:block}
+  .views-row .vc-num{font-size:15.5px;font-weight:500;letter-spacing:.03em}
+  .pn{display:flex;justify-content:space-between;gap:14px;margin-top:30px;border-top:1px solid var(--line);padding-top:22px}
+  .pn a{flex:1;font-size:14.5px;font-weight:600;color:var(--dim);transition:.25s;line-height:1.5}
+  .pn a:hover{color:var(--lime)}
+  .pn a.next{text-align:right}
+  .pn .dir{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px;color:var(--violet)}
+  .back{display:inline-block;margin:30px 0 6px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .back:hover{color:var(--lime)}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;justify-content:center;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:44px auto 0}
+
+
+  /* Theme toggle + light (day) theme */
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--card,#12121a);color:var(--ink);cursor:pointer;transition:.25s;padding:0;flex:none}
+  .theme-toggle:hover{border-color:var(--lime);color:var(--lime)}
+  .theme-toggle svg{width:19px;height:19px;display:block}
+  .theme-toggle .ic-sun{display:none}
+  html[data-theme="light"] .theme-toggle .ic-sun{display:block}
+  html[data-theme="light"] .theme-toggle .ic-moon{display:none}
+  .hdr-right{display:flex;align-items:center;gap:16px}
+  html[data-theme="light"]{--bg:#f7f6f1;--bg2:#efeee7;--ink:#17171d;--dim:#5f5f6a;--line:#ddd9cd;--card:#ffffff;--lime:#79a400;--violet:#6a54e8;--pink:#e84fc0}
+  html[data-theme="light"] .post{color:#2a2822}
+  html[data-theme="light"] .post blockquote{color:#55503f}
+
+  .pub-date{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+</style>
+<script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<style>
+#rdprog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--lime);z-index:99;transition:width .08s linear}
+.shr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:26px 0 4px}
+.shr span{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.shr-btn svg{width:20px;height:20px;display:block}
+.shr-btn{padding:10px 16px;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--ink);font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit}
+.shr-btn:hover{border-color:var(--lime)}
+.rel{margin:30px 0 6px;padding:22px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.rel h3{font-size:17px;margin:0 0 12px;color:var(--lime)}
+.rel ul{list-style:none;margin:0;padding:0}
+.rel li{padding:9px 0;border-top:1px solid var(--line)}
+.rel li:first-child{border-top:none;padding-top:2px}
+.rel a{color:var(--ink);font-size:15px;line-height:1.45}
+.rel a:hover{color:var(--lime)}
+</style>
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#0a0a0f" />
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+<meta name="robots" content="noindex" />
+</head>
+<body>
+<div id="rdprog"></div>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../../">DEON<span>.</span></a>
+    <span class="hdr-right"><a class="home-link" href="../">&larr; Memories</a><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button></span>
+  </header>
+  <div class="sec-tag">// Memories</div>
+  <h1 class="title">അതൊക്കെയൊരു കാലം</h1>
+  <div class="pub-date">March 25, 2017</div>
+  <article class="post">
+<p>മറതീർത്ത മതിലുകളുടെ സ്ഥാനത്ത് സുതാര്യമായ വേലിപ്പത്തലുകൾ അതിരുകളായിരുന്ന കാലം..</p><p>പുഴയിലെ തെളിഞ്ഞ വെള്ളത്തിൽ കൂട്ടുകാരോടൊപ്പം മണിക്കൂറുകളോളം നീരാടിയിരുന്ന കാലം..</p><p>സ്കൂളിൽ പൊരിവെയിലത്ത് അസംബ്ലി നിന്നിരുന്ന കാലം..</p><p>പൊട്ടിപ്പോവാതെ കൊണ്ടുനടന്ന സ്ളേറ്റിന്റെയും കല്ലുപെൻസിലുകളുടെയും കാലം..</p><p>മടിയുള്ള ദിവസങ്ങളിൽ വയറുവേദന അടവാക്കിയിരുന്ന കാലം..</p><p>സീ ഈ മാർക്കും അസൈൻമെന്റുകളും ഇല്ലാതിരുന്ന കാലം..</p><p>മുഖത്തോട് മുഖം നോക്കിനിന്നെഴുതിയ കേട്ടെഴുത്തുകളുടെ കാലം..</p><p>ഉച്ചക്കഞ്ഞിയുടെയും പയറിൻറെയും ഒരുരൂപാ അച്ചാറിന്റെയും കാലം..</p><p>കണക്കുമാഷിന്റെ വടിയെ പേടിച്ചിരുന്ന കാലം..</p><p>ആ വടികൊണ്ടുള്ള അടി പീഡനമല്ലാതിരുന്ന കാലം..</p><p>എട്ടിലും ഒമ്പതിലും ഒക്കെ പഠിക്കുന്നവർ വലിയ ചേട്ടന്മാർ ആയിരുന്ന കാലം..</p><p>പത്താം ക്ലാസ്സൊക്കെ ഒരു കടമ്പ ആണെന്നു കരുതിയിരുന്ന കാലം..</p><p>ടീച്ചറുടെ ചുവന്ന മഷി ബുക്കിലെഴുതിയ very good ഒരംഗീകാരമായിരുന്ന കാലം..</p><p>പ്യൂമയുടെയും അഡിഡാസിന്റെയും സ്ഥാനത്ത് പാരഗൺ വള്ളിച്ചെരുപ്പുകൾ വിലസിയിരുന്ന കാലം..</p><p>ഐ പോഡിന്റെ സ്ഥാനത്ത് കാസറ്റ് വാക്ക്മാൻ ട്രെൻഡായിരുന്ന കാലം..</p><p>കല്യാണപ്പാർട്ടിയുടെ കൂടെ ജീപ്പിനു പിന്നിൽ നിന്നുപോകാൻ കൊതിച്ചിരുന്ന കാലം..</p><p>അമ്മൂമ്മ പറഞ്ഞ കഥകൾ കേട്ടുറങ്ങിയ കാലം..</p><p>മടല് ബാറ്റും കെട്ടുപന്തും കൊണ്ട് ക്രിക്കറ്റ് കളിച്ച കാലം..</p><p>വെള്ളിയാഴ്ചത്തെ ചിത്രഗീതത്തിന് ടീവീടെ മുന്നിൽ കാത്തിരുന്ന കാലം..</p><p>ശക്തിമാൻ ഹീറോ ആയിരുന്ന കാലം..</p><p>സൈക്കിൾ ടയറും ഉരുട്ടി നടന്നിരുന്ന കാലം..</p><p>സ്വന്തമായൊരു സൈക്കിൾ കിട്ടിയ അന്ന് രാത്രി ഉറക്കം നഷ്ടപ്പെട്ട് പുലരാൻ നോക്കിയിരുന്ന കാലം..</p><p>ഓണത്തിന് പൂക്കളമൊരുക്കാൻ തൊടികൾ തോറും പൂവിറുത്ത് നടന്ന കാലം..</p><p>ബട്ടണില്ലാത്ത ട്രൗസറിന്റെ കാലം..</p><p>കീടാണുവില്ലാത്ത ചെളിവെള്ളത്തിന്റെ കാലം..</p><p>പൊട്ടിയ കാൽമുട്ടുകളുടെ കാലം..</p><p>ഓർമ്മകളുടെ</p><p>കാലം..</p><p>കുട്ടിക്കാലം !!!</p><p>-ദീപക്-</p><hr/><style>
+.cmt{margin:34px 0 6px;padding:22px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.cmt h2{font-size:20px;margin:0 0 6px;color:var(--ink)}
+.cmt p{margin:0 0 16px;font-size:13.5px;color:var(--dim);line-height:1.55}
+.cmt .cmt-btn{display:inline-block;padding:12px 24px;border-radius:99px;background:var(--lime);color:#0a0a0f;font-weight:700;font-size:14.5px}
+</style>
+<section class="cmt">
+  <h2>💬 Add a comment to this post</h2>
+  <p>Your comment goes straight to Deon &mdash; nothing shows up here until he has reviewed it.</p>
+  <a class="cmt-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdYMN8qCT6FhcwEhvoPxiyemcFJIU4G3-h0FWo2C2JKxtlL2w/viewform?usp=pp_url&entry.1588219255=%E0%B4%85%E0%B4%A4%E0%B5%8A%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%86%E0%B4%AF%E0%B5%8A%E0%B4%B0%E0%B5%81%20%E0%B4%95%E0%B4%BE%E0%B4%B2%E0%B4%82" target="_blank" rel="noopener">Add a comment &rarr;</a>
+</section><p><br/></p>
+  </article>
+  <div class="shr"><span>Share this post</span><a class="shr-btn" data-sh="wa" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="Share on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a><a class="shr-btn" data-sh="tg" target="_blank" rel="noopener" aria-label="Share on Telegram" title="Share on Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a><button class="shr-btn" data-sh="cp" type="button" aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></div>
+  <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="0">0</span></div>
+  <nav class="pn"><a class="prev" href="../the-last-drink-10-02/"><span class="dir">&larr; Previous</span>ദി ലാസ്റ്റ് ഡ്രിങ്ക്</a><a class="next" href="../achachante-first-love-04-02/"><span class="dir">Next &rarr;</span>അച്ചാച്ചന്റെ ഫസ്റ്റ് ലവ്</a></nav>
+  <section class="rel"><h3>You may also like</h3><ul><li><a href="../school-nosta-05-07/">സ്കൂൾ നൊസ്റ്റ</a></li><li><a href="../first-school-05-07/">ആദ്യത്തെ സ്കൂൾ</a></li><li><a href="../cricket-nosta-05-07/">ക്രിക്കറ്റ് നൊസ്റ്റ</a></li></ul></section>
+  <a class="back" href="../">&larr; All Memories</a>
+</div>
+<footer><span>&copy; 2026 Deepak Deon</span></footer>
+
+<script>
+(function(){
+  var el=document.querySelector('.vc-num'); if(!el) return;
+  var base=parseInt(el.getAttribute('data-base')||'0',10)||0;
+  var NS='deepakdeon-site', KEY='memories-athokkeyoru-kaalam-03-25';
+  var done=false; try{ done=!!sessionStorage.getItem('vc-'+KEY); }catch(e){}
+  fetch('https://abacus.jasoncameron.dev/'+(done?'get':'hit')+'/'+NS+'/'+KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d && typeof d.value==='number'){
+        el.textContent=(base+d.value).toLocaleString('en-US');
+        if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} }
+      }
+    }).catch(function(){});
+})();
+</script>
+
+<script>
+document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var h=document.documentElement;if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');try{localStorage.setItem('dd-theme','dark')}catch(e){}}else{h.setAttribute('data-theme','light');try{localStorage.setItem('dd-theme','light')}catch(e){}}})});
+</script>
+<script data-goatcounter="https://deepakdeon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var bar=document.getElementById('rdprog');
+  function upd(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var p=max>0?(h.scrollTop/max):0;if(bar)bar.style.width=(p*100)+'%';}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+  var url=location.href, title=document.title;
+  document.querySelectorAll('.shr-btn').forEach(function(b){
+    var k=b.getAttribute('data-sh');
+    if(k==='wa')b.href='https://wa.me/?text='+encodeURIComponent(title+' '+url);
+    if(k==='tg')b.href='https://t.me/share/url?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(title);
+    if(k==='cp')b.addEventListener('click',function(){
+      var orig=b.innerHTML;function done(){b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';setTimeout(function(){b.innerHTML=orig},1600);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done).catch(function(){window.prompt('Copy this link:',url);});}
+      else{window.prompt('Copy this link:',url);}
+    });
+  });
+})();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
+</body>
+</html>
