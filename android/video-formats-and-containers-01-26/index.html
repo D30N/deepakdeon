@@ -86,21 +86,33 @@
 .rel li:first-child{border-top:none;padding-top:2px}
 .rel a{color:var(--ink);font-size:15px;line-height:1.45}
 .rel a:hover{color:var(--lime)}
+
+.dd-rt{color:var(--dim);font-weight:400}
+.dd-fsc{display:inline-flex;gap:6px}
+.dd-fs{height:40px;min-width:40px;padding:0 9px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:.25s}
+.dd-fs:hover{border-color:var(--lime);color:var(--lime)}
+.dd-react{display:flex;align-items:center;justify-content:center;gap:9px;margin:16px 0 2px}
+.dd-like{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:20px;line-height:1;cursor:pointer;transition:.2s;color:var(--dim)}
+.dd-like:hover{border-color:#ff4d6d;transform:scale(1.07)}
+.dd-like.on{border-color:#ff4d6d;background:rgba(255,77,109,.13);color:#ff4d6d}
+.dd-like-n{color:var(--dim);font-size:14.5px}
 </style>
 <link rel="manifest" href="/manifest.webmanifest" />
 <meta name="theme-color" content="#0a0a0f" />
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+<link rel="alternate" type="application/rss+xml" title="Deepak Deon — Articles" href="/feed.xml">
+<script type="application/ld+json" data-dd="schema">{"@context": "https://schema.org", "@type": "Article", "headline": "Video formats and containers", "datePublished": "2022-01-26", "author": {"@type": "Person", "name": "Deepak Deon", "url": "https://deepakdeon.github.io/"}, "publisher": {"@type": "Person", "name": "Deepak Deon"}, "image": "https://deepakdeon.github.io/assets/img/8303d68af4e42d1514ea6.jpg", "mainEntityOfPage": "https://deepakdeon.github.io/android/video-formats-and-containers-01-26/", "inLanguage": "ml"}</script>
 </head>
 <body>
 <div id="rdprog"></div>
 <div class="wrap">
   <header>
     <a class="logo" href="../../">DEON<span>.</span></a>
-    <span class="hdr-right"><a class="home-link" href="../">&larr; Android / Tech</a><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button></span>
+    <span class="hdr-right"><a class="home-link" href="../">&larr; Android / Tech</a><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><span class="dd-fsc"><button class="dd-fs" type="button" data-d="-1" aria-label="Decrease font size">A&minus;</button><button class="dd-fs" type="button" data-d="1" aria-label="Increase font size">A+</button></span></span>
   </header>
   <div class="sec-tag">// Articles</div>
   <h1 class="title">Video formats and containers</h1>
-  <div class="pub-date">January 26, 2022</div>
+  <div class="pub-date">January 26, 2022 <span class="dd-rt">&middot; 2 min read</span></div>
   <article class="post">
 <figure><img src="../../assets/img/8303d68af4e42d1514ea6.jpg"/><figcaption></figcaption></figure><p>നമ്മൾ പൊതുവേ ഫോർമാറ്റുകൾ എന്ന് പേരിൽ വിളിക്കുന്ന avi, mp4, mkv എന്നിവ ടെക്നിക്കലി പറയുകയാണെങ്കിൽ ഫോർമാറ്റുകളല്ല. അവ വെറും container കൾ മാത്രമാണ്.<br/></p><p><br/>ആദ്യം ഫോർമാറ്റുകളെ പരിചയപ്പെടാം...</p><p><br/>• <strong>ഓഡിയോ ഫോർമാറ്റുകൾ:</strong><br/><br/>mp3<br/>wav<br/>amr<br/>m4a<br/>wma<br/>AAC<br/>AC3<br/>DTS<br/>DolbyDigitalPlus etc<br/></p><p><br/>• <strong>വീഡിയോ ഫോർമാറ്റുകൾ:</strong><br/><br/>Mpeg<br/>Mpeg4<br/>AVC / H.264<br/>HEVC / H.265<br/>VVC / H.266 etc<br/></p><p><br/>• <strong>സബ്ടൈറ്റിൽ ഫോർമാറ്റുകൾ:</strong><br/><br/>srt<br/>Vobsub<br/>ass<br/>smi etc<br/></p><p><br/>ഒരു പാട്ട് നമ്മൾ ഡൌൺലോഡ് ചെയ്യുന്നത് മിക്കവാറും .mp3 ആയിട്ടായിരിക്കും. ഫോണിൽ റെക്കോർഡ് ചെയ്യുന്നത് ആണെങ്കിൽ .amr ആയിട്ടായിരിക്കും. ആപ്പിൾ ഡിവൈസുകളിൽ അത് .m4a ആയിട്ടായിരിക്കും. ഇനി ഏറ്റവും ഹൈ ക്വാളിറ്റി ഫയലുകൾ വരുന്നത് .flac രൂപത്തിലായിരിക്കും. crazyfrog.mp3 എന്ന ഫയലിൽ .mp3 എന്ന വാല് ഈ ഫോർമാറ്റിനെയാണ് സൂചിപ്പിക്കുന്നത്. <br/></p><p><br/>പക്ഷേ വീഡിയോ ഫയലുകൾ വ്യത്യസ്തമാണ്. കാരണം അവയിൽ ഓഡിയോ + വീഡിയോ അടങ്ങിയിരിക്കും. അങ്ങനെ ഓഡിയോയും വീഡിയോയും ഉൾക്കൊള്ളുന്ന ഫയലുകളെയാണ് container എന്ന് വിളിക്കുന്നത്. avi, mp4, mkv ഇവയൊക്കെ കണ്ടെയ്നറുകളാണ്. <br/></p><p><br/>ഒരു 2GB size ഉള്ള moviename1080pYifyBrRip.mp4 എന്ന സിനിമ ഫയലിനകത്ത് 1.8GB യുടെ .H264 വീഡിയോ ഫയലും, 200MB യുള്ള ഒരു .AAC ഓഡിയോ ഫയലും ആവും ഉണ്ടാവുക. ചിലപ്പൊ 100KB യുള്ള ഒരു .SRT സബ്ടൈറ്റിൽ ഫയലും കാണും. ഇവിടെ .mp4 എന്നുള്ളത് വീഡിയോ ഫോർമാറ്റല്ല കണ്ടെയ്നർ ഫോർമാറ്റാണ്.<br/></p><p><br/>ഒരു കണ്ടേയ്നറിനകത്ത് ഒന്നിലധികം ഫയലുകൾ സൂക്ഷിക്കാം. വീഡിയോ + ഒന്നോ അതിലധികമോ ഓഡിയോ + ഒന്നോ അതിലധികമോ സബ്ബുകൾ + ഫോട്ടോകൾ പിന്നെ വിവരങ്ങൾ എല്ലാം. ഇങ്ങനെ പല ഫയലുകളെ ചേർത്ത് കണ്ടേയ്നറിനകത്ത് ആക്കുന്നതിനെ muxing എന്ന് പറയും. ചില സിനിമകൾ കണ്ടിട്ടില്ലേ. ഒരു ഫയലിനകത്ത് തന്നെ ഇംഗ്ലീഷും ഹിന്ദിയും ഓഡിയോ streams കാണും. നമുക്ക് സെലക്റ്റ് ചെയ്ത് കേൾക്കാം.<br/></p><p><br/>ഏറ്റവും പ്രചാരത്തിലുള്ള video ഫോർമാറ്റാണ് H264 അഥവാ AVC അഥവാ Advanced Video Codec. കൂടെ ഓഡിയോ ഫോർമാറ്റ് AAC അഥവാ Advanced Audio Codec ആയിരിക്കും. ഇത് രണ്ടും ഒട്ടുമിക്ക ഡിവൈസുകളും സപ്പോർട്ട് ചെയ്യും.<br/></p><p><br/>ഇനി ചില ഫോണുകളിൽ / ടീവിയിൽ ചില ഫയലുകൾ പ്ലേ ആവാത്തതിനു കാരണം സപ്പോർട്ട് ചെയ്യാത്ത ഫോർമാറ്റുകളാണ്. ഉദാ : AC3 എന്ന ഓഡിയോ ഫോർമാറ്റ് ഡോൾബിയുടെ സറൗണ്ട് ഓഡിയോ ഫോർമാറ്റാണ്. ഇത് ഡീകോഡ് ചെയ്യാൻ പല ആൻഡ്രോയ്ഡ് ഡിവൈസുകൾക്കും പറ്റില്ല. അതുപോലെ തന്നെയാണ് DTS ഓഡിയോ ഫോർമാറ്റ്. മറ്റൊരു വെല്ലുവിളിയാണ് H265 അഥവാ HEVC അഥവാ High Efficiency Video Codec. ഇതിന്റെ പ്രെത്യേകത ചെറിയ സൈസും ഉയർന്ന ക്വാളിറ്റിയുമാണ്. പക്ഷേ സപ്പോർട്ട് കുറവാണ്. <br/></p><p><br/>ടോറന്റുകളിൽ ഓഡിയോ വീഡിയോ ഫോർമാറ്റുകൾ file name നോക്കി തന്നെ മനസ്സിലാക്കാൻ പറ്റും.<br/></p><p><br/>ഉദാ : Battleship.Potemkin.1925.1080p.BluRay.x264.mp4<br/>ഇവിടെ വീഡിയോ H264 അഥവാ AVC ആണ്.<br/>ഓഡിയോ ഏതാണെന്ന് പറഞ്ഞിട്ടില്ല. അപ്പോൾ മിക്കവാറും അത് .AAC ആയിരിക്കും.<br/></p><p><br/>How.to.Train.Your.Dragon.The.Hidden.World.2019.2160p.BluRay.x265.10bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos.mkv<br/>ഇവിടെ വീഡിയോ H265 അഥവാ HEVC ആണ്.<br/>ഓഡിയോ രണ്ടെണ്ണം ഉണ്ട്. DTS-HD പിന്നെ DolbyAtmos. മൂന്നും സാദാ ഫോണുകൾ താങ്ങില്ല.<br/></p><p><br/>കണ്ടെയ്നറിൽ ഫയൽ ഇടുന്നതും (muxing) ഊരിയെടുക്കുന്നതും (demuxing) വളരെ എളുപ്പമുള്ള ജോലിയാണ്. ഒരു PC വേണമെന്ന് മാത്രം. MKV Merge എന്ന് സോഫ്റ്റ്‌വെയർ ഉപയോഗിച്ചു നോക്കുക. സിമ്പിൾ &amp; പവർഫുൾ ആണ്. Subtitle കൾ എല്ലാം സിനിമ ഫയലിനകത്ത് തന്നെ സൂക്ഷിക്കാം.</p><p><br/>എഴുതിയത്: <strong>Sreejith S.P</strong></p><p><a href="https://t.me/DeonWrites" rel="noopener" target="_blank">@DeonWrites</a></p><hr/><style>
 .cmt{margin:34px 0 6px;padding:22px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
@@ -116,6 +128,7 @@
   </article>
   <div class="shr"><span>Share this post</span><a class="shr-btn" data-sh="wa" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="Share on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a><a class="shr-btn" data-sh="tg" target="_blank" rel="noopener" aria-label="Share on Telegram" title="Share on Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a><button class="shr-btn" data-sh="cp" type="button" aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></div>
   <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="2364">2,364</span></div>
+  <div class="dd-react"><button class="dd-like" type="button" aria-label="Love this article">&#10084;</button><span class="dd-like-n"></span></div>
   <nav class="pn"><a class="prev" href="../enhance-and-colorize-old-blurry-photos-12-10/"><span class="dir">&larr; Previous</span>ക്ലാരിറ്റി കുറഞ്ഞ പഴയ ഫോട്ടോസ്…</a><a class="next" href="../bdrip-brrip-webdl-webrip-hdrip-dvdrip-tvrip-camrip-hdts-dvdscreener-01-26/"><span class="dir">Next &rarr;</span>BDRip, BrRip, WEBDL, WEBRip, H…</a></nav>
   <section class="rel"><h3>You may also like</h3><ul><li><a href="../watch-free-live-tv-channels-on-android-07-22/">Watch free live tv channels on android</a></li><li><a href="../why-poweramp-is-my-favourite-music-player-05-07/">Why Poweramp is my favourite music player</a></li><li><a href="../bdrip-brrip-webdl-webrip-hdrip-dvdrip-tvrip-camrip-hdts-dvdscreener-01-26/">BDRip, BrRip, WEBDL, WEBRip, HDRip, DVDRip, TVRip, CamRip, HDTS, DVDScreener</a></li></ul></section>
   <a class="back" href="../">&larr; All Android / Tech</a>
@@ -162,5 +175,27 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
+<script data-dd="feat">
+(function(){
+var post=document.querySelector('.post');
+function ap(v){if(post)post.style.fontSize=v+'px';}
+var saved=parseFloat(localStorage.getItem('dd-fs'));
+if(saved)ap(saved);
+document.querySelectorAll('.dd-fs').forEach(function(b){b.addEventListener('click',function(){
+var cur=post?parseFloat(getComputedStyle(post).fontSize):17.5;
+var v=Math.min(22,Math.max(15,cur+parseInt(b.getAttribute('data-d'),10)));
+localStorage.setItem('dd-fs',v);ap(v);});});
+var K='android-video-formats-and-containers-01-26-likes',NS='deepakdeon-site';
+var btn=document.querySelector('.dd-like'),n=document.querySelector('.dd-like-n');
+var liked=localStorage.getItem('dd-liked-'+K);
+if(liked)btn.classList.add('on');
+fetch('https://abacus.jasoncameron.dev/get/'+NS+'/'+K).then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&typeof d.value==='number')n.textContent=d.value;}).catch(function(){});
+btn.addEventListener('click',function(){
+if(localStorage.getItem('dd-liked-'+K))return;
+localStorage.setItem('dd-liked-'+K,'1');btn.classList.add('on');
+fetch('https://abacus.jasoncameron.dev/hit/'+NS+'/'+K).then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&typeof d.value==='number')n.textContent=d.value;}).catch(function(){});
+});
+})();
+</script>
 </body>
 </html>
