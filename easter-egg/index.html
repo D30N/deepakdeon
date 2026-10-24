@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Easter Egg</title>
+<script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<style>
+:root{--bg:#0a0a0f;--ink:#f2f0ea;--dim:#a7a7b3;--card:#15151f;--line:#262633}
+[data-theme="light"]{--bg:#f7f6f1;--ink:#17171d;--dim:#5f5f6a;--card:#ffffff;--line:#ddd9cd}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;padding:24px 16px 48px}
+main{max-width:640px;margin:0 auto;text-align:center}
+h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
+.sub{font-size:clamp(1rem,4vw,1.3rem);margin:0;opacity:.85}
+.back{margin-top:24px;font-size:.95rem}
+.back a{color:#4da6ff;text-decoration:underline}
+.set-title{margin-top:24px;font-size:clamp(1.3rem,5vw,1.8rem)}
+.quiz{margin-top:16px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.progress{display:flex;justify-content:space-between;font-size:.9rem;color:var(--dim);margin-bottom:10px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.bar i{display:block;height:100%;background:#4da6ff;width:0;transition:width .4s ease}
+.timer{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:6px}
+.timer b{font-size:1.1rem;transition:color 1.5s ease}
+.tbar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:20px}
+.tbar i{display:block;height:100%;background:#1faa53;width:100%;transition:width 1s linear,background-color 1.5s ease}
+.q{font-size:1.25rem;line-height:1.5;margin:0 0 18px}
+.opt{display:block;width:100%;text-align:left;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin:0 0 10px;font-size:1rem;font-family:inherit;cursor:pointer;transition:background .25s ease,transform .15s ease}
+.opt:active{transform:scale(.99)}
+.opt:disabled{cursor:default;opacity:1}
+.opt.correct{background:#1faa53;border-color:#1faa53;color:#fff}
+.opt.wrong{background:#e53935;border-color:#e53935;color:#fff}
+.opt.dim{opacity:.55}
+.feedback{min-height:24px;font-weight:700;margin-top:6px}
+.feedback.ok{color:#1faa53}
+.feedback.no{color:#e53935}
+.result{text-align:center}
+.result .big{font-size:3rem;font-weight:700;margin:8px 0}
+.result p{color:var(--dim)}
+.result p.m-red{color:#e53935}
+.result p.m-yellow{color:#eab308}
+.result p.m-green{color:#1faa53}
+.btn{background:#4da6ff;border:0;color:#fff;border-radius:12px;padding:13px 26px;font-size:1rem;font-family:inherit;cursor:pointer;margin-top:16px}
+#startBtn{background:#1faa53;animation:startGlow 1.8s ease-in-out infinite}
+@keyframes startGlow{0%,100%{box-shadow:0 0 0 0 rgba(31,170,83,.5)}50%{box-shadow:0 0 24px 6px rgba(31,170,83,.5)}}
+.countpop{animation:countPop .3s ease}
+@keyframes countPop{from{transform:scale(.7);opacity:.3}to{transform:scale(1);opacity:1}}
+.confetti{animation:confettiBurst 1s ease-out forwards}
+@keyframes confettiBurst{to{transform:translate(var(--dx),var(--dy)) rotate(var(--rot));opacity:0}}
+.shake{animation:shakeAnim .45s ease}
+@keyframes shakeAnim{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+</style>
+</head>
+<body>
+<main>
+<h1>Wow!</h1>
+<p class="sub">You found a hidden page</p>
+<h2 class="set-title">Quiz set #14</h2>
+<section class="quiz" id="quiz">
+<div id="startScreen" style="text-align:center;padding:24px 0"><button class="btn" id="startBtn" style="margin-top:0">Start Quiz</button></div>
+<div id="countdown" style="display:none;text-align:center;padding:24px 0;font-size:3rem;font-weight:700"></div>
+<div id="game" style="display:none">
+<div class="progress"><span id="prog">Question 1 / 31</span><span id="score">Score: 0</span></div>
+<div class="bar"><i id="barfill"></i></div>
+<div class="timer"><span>Time left</span><b id="tsec">15s</b></div>
+<div class="tbar"><i id="tbarfill"></i></div>
+<p class="q" id="qtext"></p>
+<div id="opts"></div>
+<div class="feedback" id="fb"></div>
+</div>
+</section>
+<p class="back"><a href="/">← Back to home</a></p>
+</main>
+<script>
+const SETS = [
+  { title: 'Quiz set #14', questions: [{"q": "'ആന്റണി മോസസ്' ഏത് സിനിമയിലെ കഥാപാത്രമാണ്?", "options": ["രണം", "മുംബൈ പോലീസ്", "ബ്രദേഴ്‌സ് ഡേ", "എസ്ര"], "answer": 1}, {"q": "C.I.D രാംദാസ് എന്ന ദാസൻ ഏത് വിഷയത്തിലാണ് ഫസ്റ്റ് ക്ലാസ് നേടിയത്?", "options": ["M Sc", "B Com", "M Com", "B Sc"], "answer": 1}, {"q": "\"നിന്റെയൊക്കെ കളി ഈ ______ അല്ലേ നടക്കൂ, ധൈര്യം ഉണ്ടേൽ ഇന്ത്യയിലേക്ക് വാടാ!\"", "options": ["മലപ്പുറത്ത്", "മധ്യപ്രദേശിൽ", "തമിഴ്‌നാട്ടിൽ", "ജപ്പാനിൽ"], "answer": 2}, {"q": "\"ലവൻ ______, നീ പാടുപെടും!\"", "options": ["പാടുന്നു", "ആടുന്നു", "ഓടുന്നു", "ചാടുന്നു"], "answer": 0}, {"q": "\"തീരുമ്പോ തീരുമ്പോ പണി തരാൻ ഞാനെന്താ ______ വന്ന ഭൂതാ?\"", "options": ["പാർലമെന്റീന്ന്", "അമേരിക്കേന്ന്", "കുപ്പീന്ന്", "ടിക് ടോക്കീന്ന്"], "answer": 2}, {"q": "\"യെവാളുതേ ______. അരി - അയിനാണ്!\"", "options": ["ഇക്കരേലു", "അക്കരേലു", "ചക്കരേലു", "മുക്കരേലു"], "answer": 1}, {"q": "പറക്കും തളിക മുതലാളി ഉണ്ണിയുടെ അച്ഛൻ താമരാക്ഷൻപിള്ള മരിച്ചത് എങ്ങനെയാണ്?", "options": ["ആന കുത്തി", "ബസ്സ് ഇടിച്ച്", "അറ്റാക്ക് വന്ന്", "മരിച്ചിട്ടില്ല"], "answer": 1}, {"q": "\"_____ ഇപ്പൊ യുദ്ധം ഒന്നും ഇല്ലേ?\"", "options": ["പുരുഷുവിന്", "രമണന്", "സുഗുണന്", "മേജർ രവിക്ക്"], "answer": 0}, {"q": "ജിംസി അറിയാതെ മഹേഷ് എടുത്ത ജിംസിയുടെ ഫോട്ടോ ഏത് മാസികയുടെ കവർചിത്രമായാണ് അച്ചടിച്ചു വന്നത്?", "options": ["മംഗളം", "മനോരമ", "നാന", "മഞ്ചാടി"], "answer": 3}, {"q": "'പല്ലവി' ഏത് സിനിമയിലെ കഥാപാത്രമാണ്?", "options": ["ടേക്ക് ഓഫ്", "ഉയരെ", "കൂടെ", "വൈറസ്"], "answer": 1}, {"q": "കർണ്ണൻ നെപ്പോളിയൻ എന്നിവരെക്കൂടാതെ ആരാണ് സാം അലക്സിന്റെ ഹീറോ?", "options": ["ഭഗത് സിംഗ്", "ഹർഭജൻ സിങ്", "ഋഷിരാജ് സിങ്", "മൻമോഹൻ സിംഗ്"], "answer": 0}, {"q": "\"ഭവാനി ഒന്നു മനസ്സുവെച്ചാൽ നമുക്കീ _____ ഒരു മണിയറയാക്കാം.\"", "options": ["കപ്പവറ", "നിലവറ", "കലവറ", "കുളിമുറി"], "answer": 2}, {"q": "CID Moosa ലെ മൂ.സ എന്നത് എന്തിന്റെ ചുരുക്കപ്പേരാണ്?", "options": ["മുൻഷി ശശി", "മൂലംകുഴിയിൽ സഹദേവൻ", "മൂലംകുഴിയിൽ സദാനന്ദൻ", "മുണ്ടൂർ സാബു"], "answer": 1}, {"q": "'ഉമേഷ്' ഏത് സിനിമയിലെ കഥാപാത്രമാണ്?", "options": ["ബാംഗ്ലൂർ ഡേയ്‌സ്", "തട്ടത്തിൻ മറയത്ത്", "ലവ് ആക്ഷൻ ഡ്രാമ", "ഒരു വടക്കൻ സെൽഫി"], "answer": 3}, {"q": "തൊരപ്പൻ കൊച്ചുണ്ണി മോഷ്ടിക്കാൻ കയറിയത് ഏത് ഫ്ലാറ്റിൽ ആയിരുന്നു?", "options": ["ഹീര", "സ്കൈലൈൻ", "കെന്റ്", "കോൺഫിഡന്റ്"], "answer": 1}, {"q": "താഴെ കൊടുത്തവയിൽ അൻവർ റഷീദ് ചിത്രം അല്ലാത്തത് തിരഞ്ഞെടുക്കുക...", "options": ["ഉസ്താദ് ഹോട്ടൽ", "അണ്ണൻ തമ്പി", "ആൻമരിയ കലിപ്പിലാണ്", "ഛോട്ടാ മുംബൈ"], "answer": 2}, {"q": "താഴെ കൊടുത്തവയിൽ ജിത്തു ജോസഫ് ചിത്രം അല്ലാത്തത് തിരഞ്ഞെടുക്കുക...", "options": ["ദൃശ്യം", "മെമ്മറീസ്", "ട്രാഫിക്", "ആദി"], "answer": 2}, {"q": "ചേക്കിലെ വിഷുദിനത്തിൽ പിള്ളേച്ചൻ എത്ര ചന്തിയാണ് കണി കണ്ടത്?", "options": ["3", "6", "4", "5"], "answer": 3}, {"q": "താഴെ കൊടുത്തവയിൽ ലാൽ ജോസ് ചിത്രം അല്ലാത്തത് തിരഞ്ഞെടുക്കുക...", "options": ["വലിയപെരുന്നാൾ", "സ്പാനിഷ് മസാല", "ക്ലാസ്സ്മേറ്റ്സ്", "അയാളും ഞാനും തമ്മിൽ"], "answer": 0}, {"q": "\"അപ്പുവേട്ടൻ എന്നെ സ്നേഹിക്കുന്നതിന്റെ ______ ഇരട്ടി ഞാനെന്റെ മൊയ്തീനെ സ്നേഹിക്കുന്നുണ്ട്.\"", "options": ["നൂറ്", "പതിനായിരം", "രണ്ട്", "ആയിരം"], "answer": 3}, {"q": "ഈ ചോദ്യങ്ങൾ ഒക്കെ തയ്യാറാക്കിയത് ആരാണെന്നാണ് പറഞ്ഞത്?", "options": ["Deonnn", "ലുട്ടാപ്പി", "ഡാകിനി", "കുട്ടൂസൻ"], "answer": 0}, {"q": "സാഗർ ഏലിയാസ് ജാക്കിക്ക് പണ്ട് എന്തിന്റെ കച്ചവടം ആയിരുന്നു?", "options": ["മഞ്ചാടിക്കുരു", "മയക്കുമരുന്ന്", "മത്തി", "ബിസ്ക്കറ്റ്"], "answer": 3}, {"q": "പ്യാരി മോഷ്ടിക്കാൻ ശ്രമിച്ച 'ഡെഡ്ബോഡിയുടെ അണ്ടർവെയർ' ഏത് നിറത്തിൽ ഉള്ളതായിരുന്നു?", "options": ["കറുപ്പ്", "പച്ച", "നീല", "ചുവപ്പ്"], "answer": 3}, {"q": "തെക്കോട്ടു തിരിച്ചു വെച്ചാൽ ലക്ഷണക്കേടാണെന്ന് രാമൻകുട്ടിയുടെ മുത്തച്ഛൻ പറയുന്നത് എന്തിനെക്കുറിച്ചാണ്?", "options": ["കുണ്ടി", "കിണ്ടി", "ഉരൽ", "ഉലക്ക"], "answer": 1}, {"q": "'തട്ടത്തിൻ മറയത്ത്' എന്ന സിനിമയുടെ സംഗീത സംവിധായകൻ?", "options": ["ഗോപി സുന്ദർ", "ജെറി അമൽദേവ്", "വിനീത് ശ്രീനിവാസൻ", "ഷാൻ റഹ്മാൻ"], "answer": 3}, {"q": "'നിരുപമ' ഏത് സിനിമയിലെ കഥാപാത്രമാണ്?", "options": ["പ്രതി പൂവൻകോഴി", "ഉദാഹരണം സുജാത", "ഹൗ ഓൾഡ് ആർ യൂ", "ലൂസിഫർ"], "answer": 2}, {"q": "\"തെറി കേട്ടിട്ട് ഇവളുടെ വീട് _______ ഭാഗത്തെവിടെയോ ആണെന്നു തോന്നുന്നു.\"", "options": ["കൊടുങ്ങല്ലൂർ", "തൃശ്ശൂർ", "ആമ്പല്ലൂർ", "മലയാറ്റൂർ"], "answer": 0}, {"q": "'മാത്തൻ' ഏത് സിനിമയിലെ കഥാപാത്രമാണ്?", "options": ["കൂടെ", "മായാനദി", "മറഡോണ", "അനാർക്കലി"], "answer": 1}, {"q": "\"______ ആണ് സാറേ ഇവന്റെ മെയിൻ!'", "options": ["ശക്തി", "വിവരം", "ബുദ്ധി", "അറിവ്"], "answer": 2}, {"q": "\"മധ്യതിരുവിതാംകൂർ ഭരിച്ചിരുന്ന രാജാവാ, പേര് _____.\"", "options": ["ശശി", "മാർത്താണ്ഡവർമ്മ", "സാബു", "സോമൻ"], "answer": 0}, {"q": "'സജിൻ' എന്നത് ഏത് നടന്റെ സിനിമാരംഭകാലത്തെ പേരായിരുന്നു?", "options": ["മമ്മൂട്ടി", "മോഹൻലാൽ", "ദിലീപ്", "സുരേഷ് ഗോപി"], "answer": 0}] },
+  { title: 'Quiz set #15', questions: [{"q": "'തന്മാത്ര' എന്ന ചിത്രം 'ഓർമ്മ' എന്ന ചെറുകഥയെ അടിസ്ഥാനമാക്കി എടുത്തതാണ്. ആരാണ് ഈ ചെറുകഥ എഴുതിയത്?", "options": ["പദ്മരാജൻ", "ഭരതൻ", "തകഴി", "എം മുകുന്ദൻ"], "answer": 0}, {"q": "ജയറാം നായകനായി അഭിനയിച്ച ആദ്യ ചിത്രമാണ് ഈ പദ്മരാജൻ ചിത്രം?", "options": ["നൊമ്പരത്തിപ്പൂവ്", "മൂന്നാം പക്കം", "അപരൻ", "അകലെ"], "answer": 2}, {"q": "പുരാണകഥ അവതരിപ്പിക്കുന്ന ഏക ഭരതൻ ചിത്രമാണ് ഈ ചിത്രം...", "options": ["വൈശാലി", "ഞാൻ ഗന്ധർവ്വൻ", "ചമയം", "കേളി"], "answer": 0}, {"q": "'മിന്നാമിനുങ്ങ്' എന്ന ചിത്രത്തിലെ അഭിനയത്തിന് 2016 ലെ മികച്ച നടിക്കുള്ള ദേശീയ അവാർഡ് നേടിയത് ആര്?", "options": ["പാർവ്വതി തിരുവോത്ത്", "ഉർവ്വശി", "സുരഭി ലക്ഷ്മി", "മഞ്ജു വാര്യർ"], "answer": 2}, {"q": "പ്രസിഡന്റിന്റെ സ്വർണ്ണമെഡൽ നേടിയ 'ചെമ്മീൻ' എന്ന സിനിമ പുറത്തിറങ്ങിയത് ഏത് വർഷമാണ്?", "options": ["1970", "1965", "1960", "1975"], "answer": 1}, {"q": "മലയാളത്തിലെ ആദ്യത്തെ Dolby Stereo സിനിമ?", "options": ["യോദ്ധാ", "വർണ്ണപ്പകിട്ട്", "മണിച്ചിത്രത്താഴ്", "കാലാപാനി"], "answer": 3}, {"q": "മലയാളത്തിലെ ആദ്യത്തെ ഫിലിം സ്റ്റുഡിയോ?", "options": ["ചിത്രലേഖ", "നവോദയ", "ഉദയ", "മെറിലാൻഡ്"], "answer": 2}, {"q": "ഏറ്റവും അധികം സിനിമകളിൽ അഭിനയിച്ച മലയാള നടൻ?", "options": ["പ്രേം നസീർ", "മമ്മൂട്ടി", "ജഗതി ശ്രീകുമാർ", "മോഹൻലാൽ"], "answer": 2}, {"q": "മികച്ച നടിക്കുള്ള ദേശീയ അവാർഡ് നേടിയ ഏറ്റവും പ്രായം കുറഞ്ഞ മലയാള നടി?", "options": ["ഉർവശി", "ശോഭന", "പാർവ്വതി", "മോനിഷ"], "answer": 3}, {"q": "ഏതെങ്കിലും ഒരു വിഭാഗത്തിൽ ഏറ്റവും കൂടുതൽ സംസ്ഥാന സിനിമാ അവാർഡുകൾ നേടിയ വ്യക്തി?", "options": ["കെ ജെ യേശുദാസ്", "പദ്മരാജൻ", "മോഹൻ ലാൽ", "പ്രേം നസീർ"], "answer": 0}, {"q": "തുടർച്ചായി 11 തവണ ഒരു വിഭാഗത്തിൽ സംസ്ഥാന സിനിമാ അവാർഡ് നേടിയ വ്യക്തി?", "options": ["കെ ജെ യേശുദാസ്", "മമ്മൂട്ടി", "മോഹൻലാൽ", "കെ എസ് ചിത്ര"], "answer": 3}, {"q": "2013 ൽ പുറത്തിറങ്ങിയ സെല്ലുലോയ്ഡ് എന്ന ചിത്രത്തിൽ ജെ സി ഡാനിയേലിനെ അവതരിപ്പിച്ചത്?", "options": ["ഇന്ദ്രജിത്ത്", "ദുൽഖർ സൽമാൻ", "പൃഥ്വിരാജ്", "നിവിൻ പോളി"], "answer": 2}, {"q": "മലയാള സിനിമയിലെ ആദ്യത്തെ നടി എന്ന് അറിയപ്പെടുന്നത്?", "options": ["പി. കെ. റോസി", "ജയഭാരതി", "അടൂർ ഭവാനി", "ഷീല"], "answer": 0}, {"q": "2015 ൽ പുറത്തിറങ്ങിയ 'ചാർളി' എന്ന മലയാളസിനിമ സംവിധാനം ചെയ്തത്?", "options": ["മാർട്ടിൻ പ്രക്കാട്ട്", "റോഷൻ ആൻഡ്രൂസ്", "എബ്രിഡ് ഷൈൻ", "അൻവർ റഷീദ്"], "answer": 0}, {"q": "മികച്ച വിദേശ ഭാഷാ ചിത്രത്തിനുള്ള ഓസ്കാർ നോമിനേഷൻ നേടിയ ആദ്യ മലയാള ചിത്രം?", "options": ["കാലാപാനി", "മതിലുകൾ", "ചെമ്മീൻ", "ഗുരു"], "answer": 3}, {"q": "അടൂർ ഗോപാലകൃഷ്ണൻ സംവിധാനം ചെയ്ത, ദേശീയ അവാർഡ് നേടിയ, നായിക ഇല്ലാത്ത മലയാള സിനിമ?", "options": ["മതിലുകൾ", "കഥാപുരുഷൻ", "പിന്നെയും", "വിധേയൻ"], "answer": 0}, {"q": "നടൻ കൊച്ചിൻ ഹനീഫ സംവിധാനം ചെയ്ത മലയാള സിനിമ?", "options": ["വാത്സല്യം", "ഉദയപുരം സുൽത്താൻ", "ആൺകിളിയുടെ താരാട്ട്", "കേരളഹൗസ് ഉടൻ വിൽപ്പനയ്ക്ക്"], "answer": 0}, {"q": "'നെയ്ത്തുകാരൻ' എന്ന മലയാള സിനിമ ആരുടെ ജീവിതത്തെ ആസ്പദമാക്കിയുള്ളതാണ്?", "options": ["അയ്യൻകാളി", "ഇ. എം. എസ്. നമ്പൂതിരിപ്പാട്", "ശ്രീ നാരായണഗുരു", "മഹാത്മാഗാന്ധി"], "answer": 1}, {"q": "ജയൻ അവസാനമായി അഭിനയിച്ച മലയാള ചിത്രം?", "options": ["അങ്ങാടി", "കരിമ്പന", "കോളിളക്കം", "കരിമ്പ്"], "answer": 2}, {"q": "വിനീത് ശ്രീനിവാസൻ സംവിധാനം ചെയ്ത ആദ്യ മലയാള സിനിമ?", "options": ["തട്ടത്തിൻ മറയത്ത്", "മലർവാടി ആർട്ട്സ് ക്ലബ്", "സൈക്കിൾ", "തിര"], "answer": 1}, {"q": "ശ്രേയ ഘോഷാൽ ആദ്യമായി പാടിയ മലയാള ഗാനം ഏത് സിനിമയിലേതാണ്?", "options": ["ബനാറസ്", "ബിഗ് ബി", "നീലത്താമര", "സാഗർ ഏലിയാസ് ജാക്കി റീലോഡഡ്"], "answer": 1}, {"q": "ദേശീയ അവാർഡ് നേടിയ 'മനുഷ്യൻ മതങ്ങളെ സൃഷ്ടിച്ചു' എന്ന ഗാനത്തിന്റെ രചയിതാവ്?", "options": ["ഒ. എൻ. വി കുറുപ്പ്", "കൈതപ്രം ദാമോദരൻ നമ്പൂതിരി", "വയലാർ രാമവർമ്മ", "ശ്രീകുമാരൻ തമ്പി"], "answer": 2}, {"q": "ഏറ്റവും കൂടുതൽ ദിവസം തീയറ്ററിൽ കളിച്ച മലയാള സിനിമയിലെ നായകൻ ആരാണ്?", "options": ["മമ്മൂട്ടി", "മോഹൻലാൽ", "മുകേഷ്", "നസീർ"], "answer": 2}, {"q": "2019 ലെ മികച്ച നടിക്കുള്ള സംസ്ഥാന അവാർഡ് നേടിയത്?", "options": ["മഞ്ജു വാര്യർ", "നിമിഷ സജയൻ", "അന്ന ബെൻ", "പാർവ്വതി"], "answer": 1}, {"q": "ഏറ്റവും കൂടുതൽ സിനിമകളിൽ നായകനായി അഭിനയിച്ച് ഗിന്നസ് ബുക്കിൽ ഇടം നേടിയ മലയാളി?", "options": ["മോഹൻലാൽ", "ജഗതി ശ്രീകുമാർ", "പ്രേം നസീർ", "മമ്മൂട്ടി"], "answer": 2}] },
+  { title: 'Quiz set #16', questions: [{"q": "ഈ ജയറാം ചിത്രത്തിലെ നായികയാണ് 2004 ൽ വിമാനാപകടത്തിൽ കൊല്ലപ്പെട്ടത്...", "options": ["യാത്രക്കാരുടെ ശ്രദ്ധയ്ക്ക്", "മലയാളി മാമന് വണക്കം", "എന്റെ വീട് അപ്പൂന്റെം", "ഞാൻ സൽപ്പേര് രാമൻകുട്ടി"], "answer": 0}, {"q": "\"നടേശാ... കൊല്ലണ്ട!\" \nരാവണപ്രഭുവിലെ ഡയലോഗ്‌ ആണ്.\nആരാണ് നടേശൻ?", "options": ["ബാബുരാജ്", "സ്ഫടികം ജോർജ്ജ്", "കീരിക്കാടൻ ജോസ്", "അബു സലീം"], "answer": 0}, {"q": "'ഇൻ ഹരിഹർ നഗർ' സിനിമയിൽ സിദ്ധിഖ് ചെയ്ത കഥാപാത്രത്തിന്റെ പേര്?", "options": ["തോമസ് കുട്ടി", "ജോർജ്ജ് കുട്ടി", "കൃഷ്ണൻ കുട്ടി", "ഗോവിന്ദൻ കുട്ടി"], "answer": 3}, {"q": "താഴെ കൊടുത്തവയിൽ മോഹൻലാൽ അഭിനയിച്ചിട്ടില്ലാത്ത സിനിമ?", "options": ["പൂവിനു പുതിയ പൂന്തെന്നൽ", "മനു അങ്കിൾ", "പെരുവണ്ണാപുരത്തെ വിശേഷങ്ങൾ", "സമ്മർ ഇൻ ബദ്‌ലഹേം"], "answer": 0}, {"q": "താഴെ കൊടുത്തവയിൽ ഏത് സിനിമയിലാണ് ദിലീപ്, 'കണ്ണൻ' എന്ന കഥാപാത്രത്തെ അവതരിപ്പിച്ചത്?", "options": ["വില്ലാളിവീരൻ", "നാടോടിമന്നൻ", "മര്യാദരാമൻ", "ശൃംഗാരവേലൻ"], "answer": 3}, {"q": "'തീവണ്ടി' യിലെ \"ജീവാംശമായ്...\" എന്നു തുടങ്ങുന്ന ഗാനം ആലപിച്ച female singer ആരാണ്?", "options": ["ഗായത്രി അശോകൻ", "ശ്രേയാ ഘോഷാൽ", "മൃദുല വാര്യർ", "ശ്വേത മോഹൻ"], "answer": 1}, {"q": "'വിജയ് സൂപ്പറും പൗർണമിയും' എന്ന സിനിമയിൽ കെ.എസ് ചിത്ര പാടി അഭിനയിച്ച ഗാനം?", "options": ["എന്തിനു വേറൊരു...", "മറന്നോ നീ...", "രാജഹംസമേ...", "മനസ്സിൻ മടിയിലെ..."], "answer": 3}, {"q": "'ക്യാപ്റ്റൻ ജേക്കബ് സ്റ്റീഫൻ' ഏത് സിനിമയിലെ കേന്ദ്ര കഥാപാത്രമാണ്?", "options": ["ജനാധിപത്യം", "വാഴുന്നോർ", "യുവതുർക്കി", "ലേലം"], "answer": 3}, {"q": "'മാന്നാർ മത്തായി സ്പീക്കിങ്' എന്ന സിനിമയിൽ ഇന്ദ്രൻസ് ചെയ്ത കഥാപാത്രം?", "options": ["തങ്കപ്പൻ", "എൽദോ", "സന്ധ്യാവ്", "പൊന്നപ്പൻ"], "answer": 3}, {"q": "'ശങ്കർ ദാസ്' ഏത് സിനിമയിലെ കഥാപാത്രമാണ്?", "options": ["ഇരുപതാം നൂറ്റാണ്ട്", "ഉസ്താദ്", "ന്യൂഡൽഹി", "അഴകിയ രാവണൻ"], "answer": 3}, {"q": "സിദ്ധിക്ക്-ലാൽ സംവിധാനം ചെയ്ത 'റാംജി റാവു സ്പീക്കിംഗ്' എന്ന സിനിമയിലൂടെ മലയാളത്തിൽ അരങ്ങേറ്റം കുറിച്ച നടൻ?", "options": ["സായ് കുമാർ", "ഹരിശ്രീ അശോകൻ", "മുകേഷ്", "റിസബാവ"], "answer": 0}, {"q": "വിനീത് ശ്രീനിവാസൻ സംവിധാനം ചെയ്ത 'തട്ടത്തിൻ മറയത്ത്' റിലീസായ വർഷം?", "options": ["2013", "2011", "2012", "2010"], "answer": 2}, {"q": "സംവിധായകൻ പി പദ്മരാജന്റെ അവസാനത്തെ ചിത്രം ഏതാണ്?", "options": ["ഞാൻ ഗന്ധർവ്വൻ", "മൂന്നാം പക്കം", "തൂവാനത്തുമ്പികൾ", "നമുക്കു പാർക്കാൻ മുന്തിരിത്തോപ്പുകൾ"], "answer": 0}, {"q": "'ക്ലാസ്സ്മേറ്റ്‌സ്' എന്ന ലാൽജോസ് ചിത്രം റിലീസായ വർഷം?", "options": ["2006", "2005", "2008", "2007"], "answer": 0}, {"q": "താഴെ കൊടുത്തവയിൽ ഭാവന അഭിനയിച്ചിട്ടുള്ള സിനിമ?", "options": ["ഈ പറക്കും തളിക", "തിളക്കം", "ബോഡിഗാർഡ്", "കല്യാണരാമൻ"], "answer": 1}, {"q": "താഴെ കൊടുത്തവയിൽ മൂന്നാം ഭാഗം ഇറങ്ങിയിട്ടില്ലാത്ത സിനിമ?", "options": ["ഇൻ ഹരിഹർ നഗർ", "ലൂസിഫർ", "റാംജി റാവു സ്പീക്കിങ്", "നാടോടിക്കാറ്റ്"], "answer": 1}, {"q": "'ശത്രുഘ്‌നൻ' ഏത് സിനിമയിലെ കഥാപാത്രമാണ്?", "options": ["മീശമാധവൻ", "കല്യാണരാമൻ", "പുലിവാൽ കല്യാണം", "തെങ്കാശിപ്പട്ടണം"], "answer": 3}, {"q": "'കുമ്പളങ്ങി നൈറ്റ്‌സ്' എന്ന സിനിമയുടെ സംഗീത സംവിധായകൻ?", "options": ["സുഷിൻ ശ്യാം", "ഷാൻ റഹ്മാൻ", "ഗോപി സുന്ദർ", "കൈലാസ് മേനോൻ"], "answer": 0}, {"q": "\"നിലാവേ മായുമോ\" എന്ന സൂപ്പർഹിറ്റ് ഗാനം ഏത് സിനിമയിലേതാണ്?", "options": ["കിലുക്കം", "ചിത്രം", "താളവട്ടം", "മിന്നാരം"], "answer": 3}, {"q": "'ഛോട്ടാ മുംബൈ' എന്ന സിനിമയിൽ ഇന്ദ്രജിത്ത് ചെയ്ത കഥാപാത്രം?", "options": ["സൈനു", "വാസൂട്ടൻ", "ചന്ദ്രപ്പൻ", "ടോമിച്ചൻ"], "answer": 3}] }
+];
+let setIdx = 0;
+try {
+  const n = parseInt(localStorage.getItem('dd-quizset') || '0', 10);
+  setIdx = isNaN(n) ? 0 : n % SETS.length;
+  localStorage.setItem('dd-quizset', String(setIdx + 1));
+} catch (e) {}
+document.querySelector('.set-title').textContent = SETS[setIdx].title;
+const QUESTIONS = SETS[setIdx].questions;
+function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+const QUIZ = shuffle(QUESTIONS.map(q => {
+  const opts = q.options.map((text, i) => ({ text, correct: i === q.answer }));
+  shuffle(opts);
+  return { q: q.q, options: opts.map(o => o.text), answer: opts.findIndex(o => o.correct) };
+}));
+let idx = 0, score = 0, locked = false, timerId = null, timeLeft = 15, qStart = 0;
+const times = [];
+const qtext = document.getElementById('qtext');
+const optsEl = document.getElementById('opts');
+const prog = document.getElementById('prog');
+const scoreEl = document.getElementById('score');
+const barfill = document.getElementById('barfill');
+const tsec = document.getElementById('tsec');
+const tbarfill = document.getElementById('tbarfill');
+const fb = document.getElementById('fb');
+const quizEl = document.getElementById('quiz');
+function stopTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
+function stageColor(pct) {
+  if (pct >= 70) return '#1faa53';
+  if (pct >= 40) return '#eab308';
+  if (pct >= 10) return '#f97316';
+  return '#e53935';
+}
+function paintTimer() {
+  const c = stageColor(timeLeft / 15 * 100);
+  tsec.style.color = c;
+  tbarfill.style.backgroundColor = c;
+}
+function startTimer() {
+  stopTimer();
+  timeLeft = 15;
+  tsec.textContent = '15s';
+  tbarfill.style.width = '100%';
+  paintTimer();
+  timerId = setInterval(() => {
+    timeLeft--;
+    tsec.textContent = timeLeft + 's';
+    tbarfill.style.width = (timeLeft / 15 * 100) + '%';
+    paintTimer();
+    if (timeLeft <= 0) { stopTimer(); onTimeout(); }
+  }, 1000);
+}
+function render() {
+  const q = QUIZ[idx];
+  locked = false;
+  qStart = Date.now();
+  fb.textContent = '';
+  fb.className = 'feedback';
+  prog.textContent = 'Question ' + (idx + 1) + ' / ' + QUIZ.length;
+  scoreEl.textContent = 'Score: ' + score;
+  barfill.style.width = (idx / QUIZ.length * 100) + '%';
+  qtext.textContent = q.q;
+  optsEl.innerHTML = '';
+  q.options.forEach((op, i) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.textContent = String.fromCharCode(65 + i) + '. ' + op;
+    b.onclick = () => pick(i, b);
+    optsEl.appendChild(b);
+  });
+  startTimer();
+}
+function reveal(correctIdx, pickedIdx) {
+  const btns = optsEl.querySelectorAll('.opt');
+  btns.forEach((b, j) => {
+    b.disabled = true;
+    if (j === correctIdx) b.classList.add('correct');
+    else if (j === pickedIdx) b.classList.add('wrong');
+    else b.classList.add('dim');
+  });
+}
+function next() {
+  setTimeout(() => {
+    idx++;
+    if (idx < QUIZ.length) render();
+    else showResult();
+  }, 1500);
+}
+function recordTime() { times.push(Math.min(15, Math.max(0, Math.round((Date.now() - qStart) / 1000)))); }
+function burst(el) {
+  const r = el.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const colors = ['#1faa53', '#c8f542', '#eab308', '#4da6ff', '#e84fc0', '#ffffff'];
+  for (let k = 0; k < 40; k++) {
+    const s = document.createElement('span');
+    const size = 6 + Math.random() * 6;
+    s.style.cssText = 'position:fixed;left:' + cx + 'px;top:' + cy + 'px;width:' + size + 'px;height:' + size + 'px;background:' + colors[k % colors.length] + ';border-radius:' + (Math.random() > 0.5 ? '50%' : '2px') + ';pointer-events:none;z-index:9999;';
+    const ang = Math.random() * Math.PI * 2;
+    const dist = 60 + Math.random() * 120;
+    s.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
+    s.style.setProperty('--dy', (Math.sin(ang) * dist - 60) + 'px');
+    s.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+    s.className = 'confetti';
+    document.body.appendChild(s);
+    s.addEventListener('animationend', () => s.remove());
+  }
+}
+function pick(i, btn) {
+  if (locked) return;
+  locked = true;
+  stopTimer();
+  recordTime();
+  const q = QUIZ[idx];
+  reveal(q.answer, i);
+  if (i === q.answer) {
+    score++;
+    scoreEl.textContent = 'Score: ' + score;
+    fb.textContent = 'Correct!';
+    fb.className = 'feedback ok';
+    burst(btn);
+    if (navigator.vibrate) navigator.vibrate(50);
+  } else {
+    fb.textContent = 'Wrong!';
+    fb.className = 'feedback no';
+    quizEl.classList.remove('shake');
+    void quizEl.offsetWidth;
+    quizEl.classList.add('shake');
+    setTimeout(() => quizEl.classList.remove('shake'), 500);
+    if (navigator.vibrate) navigator.vibrate([60, 60, 60]);
+  }
+  next();
+}
+function onTimeout() {
+  if (locked) return;
+  locked = true;
+  recordTime();
+  const q = QUIZ[idx];
+  reveal(q.answer, -1);
+  fb.textContent = "Time's up!";
+  fb.className = 'feedback no';
+  next();
+}
+function showResult() {
+  stopTimer();
+  barfill.style.width = '100%';
+  let msg = 'Better luck next time!';
+  let msgCls = 'm-red';
+  if (score === QUIZ.length) { msg = 'Outstanding!'; msgCls = 'm-green'; }
+  else if (score >= Math.round(QUIZ.length * 0.7)) { msg = 'Excellent!'; msgCls = 'm-green'; }
+  else if (score >= Math.round(QUIZ.length * 0.4)) { msg = 'Good!'; msgCls = 'm-yellow'; }
+  const total = times.reduce((a, b) => a + b, 0);
+  const totalText = total >= 60 ? Math.floor(total / 60) + 'm ' + (total % 60) + 's' : total + 's';
+  quizEl.innerHTML = '<div class="result"><p>Game Over</p><div class="big">' + score + ' / ' + QUIZ.length + '</div><p class="' + msgCls + '">' + msg + '</p><p>Total time: ' + totalText + '</p><button class="btn" onclick="location.reload()">Play Again</button></div>';
+}
+document.getElementById('startBtn').onclick = () => {
+  const cd = document.getElementById('countdown');
+  document.getElementById('startScreen').style.display = 'none';
+  cd.style.display = 'block';
+  const steps = ['Ready?', '5', '4', '3', '2', '1', 'Go!'];
+  let si = 0;
+  const showStep = () => {
+    cd.textContent = steps[si];
+    cd.classList.remove('countpop');
+    void cd.offsetWidth;
+    cd.classList.add('countpop');
+    const last = si === steps.length - 1;
+    const wait = last ? 800 : 1000;
+    si++;
+    if (si < steps.length) setTimeout(showStep, wait);
+    else setTimeout(() => {
+      cd.style.display = 'none';
+      document.getElementById('game').style.display = 'block';
+      render();
+    }, wait);
+  };
+  showStep();
+};
+</script>
+</body>
+</html>
