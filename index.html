@@ -236,6 +236,16 @@
 <script>try{ if(sessionStorage.getItem('dd-loader-seen')) document.documentElement.classList.add('seen-loader'); }catch(e){}</script>
 <link rel="alternate" type="application/rss+xml" title="Deepak Deon — Articles" href="/feed.xml">
 <script type="application/ld+json" data-dd="schema">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "Deepak Deon", "url": "https://deepakdeon.github.io/"}, {"@type": "Person", "name": "Deepak Deon", "alternateName": "Deon", "url": "https://deepakdeon.github.io/", "image": "https://deepakdeon.github.io/assets/og-image-v3.jpg", "jobTitle": "Content Creator & Developer", "description": "Deepak Deon is a content creator and Android developer from Kochi, Kerala, India, creating tech content, stories and reels in Malayalam and English.", "address": {"@type": "PostalAddress", "addressLocality": "Kochi", "addressRegion": "Kerala", "addressCountry": "IN"}, "knowsLanguage": ["Malayalam", "English"], "sameAs": ["https://www.instagram.com/deepak.deon", "https://www.youtube.com/@deepak-deon", "https://t.me/DeonWrites", "https://www.facebook.com/100001236831671", "https://github.com/deepakdeon", "https://github.com/D30N", "https://www.buymeacoffee.com/deepakdeon"]}]}</script>
+<style>
+.deon-row{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;transition:transform .18s ease}
+.deon-row.holding{overflow:visible;animation:deonShake .28s linear infinite}
+.deon-row.tap-glow{overflow:visible}
+.deon-row.tap-glow svg{animation:tapGlow 2s ease forwards}
+.deon-row.tap-glow svg .base{animation:tapStroke 2s ease forwards}
+@keyframes tapGlow{0%{filter:drop-shadow(0 0 5px rgba(200,230,255,1)) drop-shadow(0 0 12px rgba(0,144,255,1)) drop-shadow(0 0 20px rgba(0,102,255,.8))}35%{filter:drop-shadow(0 0 6px rgba(220,240,255,1)) drop-shadow(0 0 14px rgba(0,144,255,1)) drop-shadow(0 0 24px rgba(0,102,255,.85))}100%{filter:drop-shadow(0 0 0 rgba(0,102,255,0))}}
+@keyframes tapStroke{0%{stroke:#2f9bff;stroke-width:4}35%{stroke:#7cc4ff;stroke-width:5}100%{stroke:var(--ink);stroke-width:2.4}}
+@keyframes deonShake{0%,100%{transform:scale(1.07) translate(0,0)}20%{transform:scale(1.07) translate(-4px,2px)}40%{transform:scale(1.07) translate(4px,-2px)}60%{transform:scale(1.07) translate(-4px,-2px)}80%{transform:scale(1.07) translate(4px,2px)}}
+</style>
 </head>
 <body>
 
@@ -264,7 +274,7 @@
   <div class="hero-top">
   <h1>
     <span class="row"><span>Deepak</span></span>
-    <span class="row"><span><svg class="deon-svg" viewBox="-8 0 643 188" role="img" aria-label="Deon"><defs><linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0066ff" stop-opacity="0"/><stop offset=".42" stop-color="#0090ff" stop-opacity=".55"/><stop offset=".5" stop-color="#eaf8ff" stop-opacity="1"/><stop offset=".58" stop-color="#0090ff" stop-opacity=".55"/><stop offset="1" stop-color="#0066ff" stop-opacity="0"/></linearGradient><mask id="deonOutlineMask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="690" height="230"><text x="0" y="154" font-size="200" letter-spacing="-2" fill="none" stroke="#fff" stroke-width="7">DEON</text></mask></defs><text class="base" x="0" y="154" font-size="200" letter-spacing="-2">DEON</text><g mask="url(#deonOutlineMask)"><g class="beam-move"><rect x="0" y="-12" width="250" height="212" fill="url(#beamGrad)"/></g></g></svg></span></span>
+    <span class="row deon-row" id="deonRow"><span><svg class="deon-svg" viewBox="-8 0 643 188" role="img" aria-label="Deon"><defs><linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0066ff" stop-opacity="0"/><stop offset=".42" stop-color="#0090ff" stop-opacity=".55"/><stop offset=".5" stop-color="#eaf8ff" stop-opacity="1"/><stop offset=".58" stop-color="#0090ff" stop-opacity=".55"/><stop offset="1" stop-color="#0066ff" stop-opacity="0"/></linearGradient><mask id="deonOutlineMask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="690" height="230"><text x="0" y="154" font-size="200" letter-spacing="-2" fill="none" stroke="#fff" stroke-width="7">DEON</text></mask></defs><text class="base" x="0" y="154" font-size="200" letter-spacing="-2">DEON</text><g mask="url(#deonOutlineMask)"><g class="beam-move"><rect x="0" y="-12" width="250" height="212" fill="url(#beamGrad)"/></g></g></svg></span></span>
     <span class="row"><span>Here<i class="dot">.</i></span></span>
   </h1>
   </div>
@@ -748,5 +758,20 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
+<script>
+(function(){var row=document.getElementById('deonRow');if(!row)return;var timer=null,held=false,navTimer=null,navigated=false;
+function clearHold(){if(timer){clearTimeout(timer);timer=null;}}
+function buzz(){try{if(navigator.vibrate){navigator.vibrate([25,50,25,50,25,50,25,50,25,50,25,50]);}}catch(e){}}
+function stopBuzz(){try{if(navigator.vibrate){navigator.vibrate(0);}}catch(e){}}
+function goEgg(){if(!navigated){navigated=true;window.location.href='easter-egg/';}}
+function endHold(){clearHold();if(navTimer){clearTimeout(navTimer);navTimer=null;}if(held){held=false;row.classList.remove('holding');stopBuzz();}}
+row.addEventListener('pointerdown',function(){navigated=false;held=false;clearHold();timer=setTimeout(function(){held=true;row.classList.add('holding');buzz();navTimer=setTimeout(goEgg,650);},350);});
+row.addEventListener('pointerup',function(){var wasHeld=held;endHold();if(wasHeld){goEgg();}else{row.classList.remove('tap-glow');void row.offsetWidth;row.classList.add('tap-glow');}});
+var tapSvg=row.querySelector('svg');if(tapSvg){tapSvg.addEventListener('animationend',function(e){if(e.animationName==='tapGlow'){row.classList.remove('tap-glow');}});}
+row.addEventListener('pointercancel',function(){endHold();});
+row.addEventListener('pointerleave',function(){endHold();});
+row.addEventListener('contextmenu',function(e){e.preventDefault();});
+})();
+</script>
 </body>
 </html>
